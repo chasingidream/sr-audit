@@ -1,0 +1,13 @@
+{
+ "method": "OUR-OLD: WorldStrat归一化(批池化伪增益)",
+ "orig_gain_db": 0.73,
+ "orig_ci": [-0.449, 1.91],
+ "orig_p": 0.205,
+ "audit_gain_db": -1.12,
+ "audit_ci": [-2.643, 0.402],
+ "audit_p": 0.1462,
+ "audit_d": null,
+ "passes_floor": false,
+ "g1": "-", "g2": "-", "g3": "-", "g4": "-", "g5": "-",
+ "note": "批池化 +0.73 dB 不显著(p=0.205, CI跨0); 逐样本 -1.12 dB(p=0.146); model&bicubic 均显著低于均值地板 -> 方法增益不成立"
+}

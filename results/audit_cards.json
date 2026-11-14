@@ -1,0 +1,267 @@
+{
+  "standard": "SR-Audit Report Standard v1",
+  "n_cards": 8,
+  "counts": {
+    "regime": {
+      "positive": 1,
+      "saturated": 0,
+      "floor-failure": 4,
+      "n/a": 3
+    },
+    "credibility": {
+      "VERIFIED": 2,
+      "QUALIFIED": 0,
+      "VOID": 4,
+      "UNVERIFIED": 2
+    }
+  },
+  "cards": [
+    {
+      "method": "RAMS (Salvetti et al., RS 2020, 12(14):2207; 32f/3D+N12+r8, 多帧 MFSR)",
+      "task": "PROBA-V 轴多帧 MFSR (同传感器 300m->100m, 3x, T=9, 单波段 RED)",
+      "n_test": 60,
+      "split": "PROBA-V train, val=后10% (deterministic crop); 与三轴 mtxa 系列同切分",
+      "gate_verdict": "PASS",
+      "credibility": "VERIFIED",
+      "regime": "positive",
+      "audit_gain_db": 2.886,
+      "audit_ci": [
+        1.893,
+        3.878
+      ],
+      "audit_p": 0.0,
+      "audit_d": 0.736,
+      "passes_floor": true,
+      "floor_gap_db": 4.308,
+      "delta_floor_db": 1.421999999999997,
+      "gates": {
+        "g1": "PASS",
+        "g2": "PASS",
+        "g3": "PASS",
+        "g4": "PASS",
+        "g5": "PASS"
+      },
+      "reasons": [
+        "gain significant and clears the skill floor -> genuine skill"
+      ],
+      "headline": "RAMS (Salvetti et al., RS 2020, 12(14):2207; 32f/3D+N12+r8, 多帧 MFSR) | regime=positive | badge=VERIFIED | gain=+2.89 dB | p=0 | Δ_floor=+1.42 dB"
+    },
+    {
+      "method": "EDSR (Lim et al. 2017, 16 blocks/64 feats, 单图 SISR)",
+      "task": "WorldStrat 轴单图 SISR (S2 frame0 10m -> SPOT 1.5m, 6.63x 跨传感器)",
+      "n_test": 60,
+      "split": "subset=600, val=后10% (60 samples), deterministic crop",
+      "gate_verdict": "FAIL",
+      "credibility": "VOID",
+      "regime": "floor-failure",
+      "audit_gain_db": -2.428,
+      "audit_ci": [
+        -4.565,
+        -0.291
+      ],
+      "audit_p": 0.029804,
+      "audit_d": -0.287,
+      "passes_floor": false,
+      "floor_gap_db": -4.699,
+      "delta_floor_db": -2.2709999999999972,
+      "gates": {
+        "g1": "FAIL",
+        "g2": "WARN",
+        "g3": "PASS",
+        "g4": "PASS",
+        "g5": "PASS"
+      },
+      "reasons": [
+        "gate FAIL: G1 -> numbers void",
+        "baseline collapsed: Δ_floor=-2.27 dB <= 0, model−bicubic not interpretable as skill",
+        "model does not clear the mean-predictor skill floor"
+      ],
+      "headline": "EDSR (Lim et al. 2017, 16 blocks/64 feats, 单图 SISR) | regime=floor-failure | badge=VOID | gain=-2.43 dB | p=0.0298 | Δ_floor=-2.27 dB"
+    },
+    {
+      "method": "HighRes-net",
+      "task": "WorldStrat JIF MFSR (S2 8 revisits -> SPOT, 160->156 近匹配融合/锐化)",
+      "n_test": 394,
+      "split": "official stratified test (held-out)",
+      "gate_verdict": "PASS",
+      "credibility": "VERIFIED",
+      "regime": "floor-failure",
+      "audit_gain_db": 7.912,
+      "audit_ci": [
+        7.182,
+        8.641
+      ],
+      "audit_p": 0.0,
+      "audit_d": 1.074,
+      "passes_floor": true,
+      "floor_gap_db": null,
+      "delta_floor_db": -6.916,
+      "gates": {
+        "g1": "PASS",
+        "g2": "PASS",
+        "g3": "PASS",
+        "g4": "n/a",
+        "g5": "PASS"
+      },
+      "reasons": [
+        "baseline collapsed: Δ_floor=-6.92 dB <= 0, model−bicubic not interpretable as skill"
+      ],
+      "headline": "HighRes-net | regime=floor-failure | badge=VERIFIED | gain=+7.91 dB | p=0 | Δ_floor=-6.92 dB"
+    },
+    {
+      "method": "OUR-OLD: WorldStrat归一化(批池化伪增益)",
+      "task": null,
+      "n_test": null,
+      "split": null,
+      "gate_verdict": "n/a",
+      "credibility": "UNVERIFIED",
+      "regime": "floor-failure",
+      "audit_gain_db": -1.12,
+      "audit_ci": [
+        -2.643,
+        0.402
+      ],
+      "audit_p": 0.1462,
+      "orig_gain_db": 0.73,
+      "orig_ci": [
+        -0.449,
+        1.91
+      ],
+      "orig_p": 0.205,
+      "audit_d": null,
+      "passes_floor": false,
+      "floor_gap_db": null,
+      "delta_floor_db": null,
+      "gates": {
+        "g1": "n/a",
+        "g2": "n/a",
+        "g3": "n/a",
+        "g4": "n/a",
+        "g5": "n/a"
+      },
+      "reasons": [
+        "model does not clear the mean-predictor skill floor",
+        "no gates reported -> not audited; cited qualitatively, badge withheld"
+      ],
+      "headline": "OUR-OLD: WorldStrat归一化(批池化伪增益) | regime=floor-failure | badge=UNVERIFIED | gain=-1.12 dB | p=0.205"
+    },
+    {
+      "method": "WDSR-a (Yu et al. 2018, 16 blocks/32 feats/expand4, 单图 SISR)",
+      "task": "WorldStrat 轴单图 SISR (S2 frame0 10m -> SPOT 1.5m, 6.63x 跨传感器)",
+      "n_test": 60,
+      "split": "subset=600, val=后10% (60 samples), deterministic crop",
+      "gate_verdict": "FAIL",
+      "credibility": "VOID",
+      "regime": "floor-failure",
+      "audit_gain_db": -3.021,
+      "audit_ci": [
+        -5.128,
+        -0.915
+      ],
+      "audit_p": 0.006694,
+      "audit_d": -0.363,
+      "passes_floor": false,
+      "floor_gap_db": -5.292,
+      "delta_floor_db": -2.2709999999999972,
+      "gates": {
+        "g1": "FAIL",
+        "g2": "FAIL",
+        "g3": "PASS",
+        "g4": "PASS",
+        "g5": "PASS"
+      },
+      "reasons": [
+        "gate FAIL: G1, G2 -> numbers void",
+        "baseline collapsed: Δ_floor=-2.27 dB <= 0, model−bicubic not interpretable as skill",
+        "model does not clear the mean-predictor skill floor"
+      ],
+      "headline": "WDSR-a (Yu et al. 2018, 16 blocks/32 feats/expand4, 单图 SISR) | regime=floor-failure | badge=VOID | gain=-3.02 dB | p=0.00669 | Δ_floor=-2.27 dB"
+    },
+    {
+      "method": "EDiffSR (TGRS 2024)",
+      "task": null,
+      "n_test": null,
+      "split": null,
+      "gate_verdict": "FAIL",
+      "credibility": "VOID",
+      "regime": "n/a",
+      "audit_gain_db": null,
+      "audit_ci": null,
+      "audit_p": null,
+      "audit_d": null,
+      "passes_floor": false,
+      "floor_gap_db": null,
+      "delta_floor_db": null,
+      "gates": {
+        "g1": "FAIL",
+        "g2": "FAIL",
+        "g3": "n/a",
+        "g4": "n/a",
+        "g5": "FAIL"
+      },
+      "reasons": [
+        "gate FAIL: G1, G2, G5 -> numbers void",
+        "model does not clear the mean-predictor skill floor"
+      ],
+      "headline": "EDiffSR (TGRS 2024) | regime=n/a | badge=VOID"
+    },
+    {
+      "method": "OUR-OLD: mt档(GT泄漏, 已推翻)",
+      "task": null,
+      "n_test": null,
+      "split": null,
+      "gate_verdict": "FAIL",
+      "credibility": "VOID",
+      "regime": "n/a",
+      "audit_gain_db": null,
+      "audit_ci": [
+        null,
+        null
+      ],
+      "audit_p": null,
+      "audit_d": null,
+      "passes_floor": false,
+      "floor_gap_db": null,
+      "delta_floor_db": null,
+      "gates": {
+        "g1": "n/a",
+        "g2": "n/a",
+        "g3": "n/a",
+        "g4": "n/a",
+        "g5": "FAIL"
+      },
+      "reasons": [
+        "gate FAIL: G5 -> numbers void",
+        "model does not clear the mean-predictor skill floor"
+      ],
+      "headline": "OUR-OLD: mt档(GT泄漏, 已推翻) | regime=n/a | badge=VOID"
+    },
+    {
+      "method": "SEN2SR (RSE 2026, ESA Φ-lab)",
+      "task": null,
+      "n_test": null,
+      "split": null,
+      "gate_verdict": "n/a",
+      "credibility": "UNVERIFIED",
+      "regime": "n/a",
+      "audit_gain_db": null,
+      "audit_ci": null,
+      "audit_p": null,
+      "audit_d": null,
+      "passes_floor": null,
+      "floor_gap_db": null,
+      "delta_floor_db": null,
+      "gates": {
+        "g1": "n/a",
+        "g2": "n/a",
+        "g3": "n/a",
+        "g4": "n/a",
+        "g5": "n/a"
+      },
+      "reasons": [
+        "no gates reported -> not audited; cited qualitatively, badge withheld"
+      ],
+      "headline": "SEN2SR (RSE 2026, ESA Φ-lab) | regime=n/a | badge=UNVERIFIED"
+    }
+  ]
+}

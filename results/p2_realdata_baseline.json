@@ -1,0 +1,18 @@
+{
+  "task": "P2-1 downstream verification",
+  "n_classes": 10,
+  "arms": {
+    "bicubic (baseline)": {
+      "arm": "bicubic (baseline)",
+      "mAcc": 0.185,
+      "macroF1": 0.09177574169444327,
+      "mIoU": 0.06653461609179401,
+      "n_samples": 200,
+      "delta_vs_bicubic": {
+        "mAcc": 0.0,
+        "macroF1": 0.0,
+        "mIoU": 0.0
+      }
+    }
+  }
+}

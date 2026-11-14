@@ -1,0 +1,104 @@
+{
+  "standard": "SR-Audit Report Standard v1 (P2-3 external)",
+  "n_cards": 1,
+  "cards": [
+    {
+      "method": "EDSR (external re-impl)",
+      "task": "WorldStrat cross-sensor 6.63x",
+      "n_test": 60,
+      "split": "val",
+      "g1": "PASS",
+      "g2": "WARN",
+      "g3": 1.1669351633568825,
+      "g4": 1.2365765689339485,
+      "g5": "PASS",
+      "delta_floor_db": -2.255,
+      "passes_floor": false,
+      "floor_gap_db": -4.699,
+      "audit_gain_db": -2.444,
+      "audit_p": 0.029240690980952624,
+      "audit_ci": [
+        -4.632,
+        -0.256
+      ],
+      "audit_d": -0.288,
+      "_derived": {
+        "method": "EDSR (external re-impl)",
+        "task": "WorldStrat cross-sensor 6.63x",
+        "n_test": 60,
+        "split": "val",
+        "gate_verdict": "WARN",
+        "credibility": "QUALIFIED",
+        "regime": "floor-failure",
+        "audit_gain_db": -2.444,
+        "audit_ci": [
+          -4.632,
+          -0.256
+        ],
+        "audit_p": 0.029240690980952624,
+        "audit_d": -0.288,
+        "passes_floor": false,
+        "floor_gap_db": -4.699,
+        "delta_floor_db": -2.255,
+        "gates": {
+          "g1": "PASS",
+          "g2": "WARN",
+          "g3": "PASS",
+          "g4": "PASS",
+          "g5": "PASS"
+        },
+        "reasons": [
+          "gate WARN: G2",
+          "baseline collapsed: Δ_floor=-2.25 dB <= 0, model−bicubic not interpretable as skill",
+          "model does not clear the mean-predictor skill floor",
+          "model worse than bicubic: gain=-2.44 dB < 0 (p=0.0292) -> below the simplest baseline, no genuine skill"
+        ],
+        "headline": "EDSR (external re-impl) | regime=floor-failure | badge=QUALIFIED | gain=-2.44 dB | p=0.0292 | Δ_floor=-2.25 dB"
+      },
+      "derived": {
+        "method": "EDSR (external re-impl)",
+        "task": "WorldStrat cross-sensor 6.63x",
+        "n_test": 60,
+        "split": "val",
+        "gate_verdict": "WARN",
+        "credibility": "QUALIFIED",
+        "regime": "floor-failure",
+        "audit_gain_db": -2.444,
+        "audit_ci": [
+          -4.632,
+          -0.256
+        ],
+        "audit_p": 0.029240690980952624,
+        "audit_d": -0.288,
+        "passes_floor": false,
+        "floor_gap_db": -4.699,
+        "delta_floor_db": -2.255,
+        "gates": {
+          "g1": "PASS",
+          "g2": "WARN",
+          "g3": "PASS",
+          "g4": "PASS",
+          "g5": "PASS"
+        },
+        "reasons": [
+          "gate WARN: G2",
+          "baseline collapsed: Δ_floor=-2.25 dB <= 0, model−bicubic not interpretable as skill",
+          "model does not clear the mean-predictor skill floor",
+          "model worse than bicubic: gain=-2.44 dB < 0 (p=0.0292) -> below the simplest baseline, no genuine skill"
+        ],
+        "headline": "EDSR (external re-impl) | regime=floor-failure | badge=QUALIFIED | gain=-2.44 dB | p=0.0292 | Δ_floor=-2.25 dB"
+      },
+      "detail": {
+        "psnr_bicubic_mean": 15.509,
+        "psnr_sr_mean": 13.065,
+        "psnr_mean_mean": 17.764,
+        "cc_bicubic": 0.3027,
+        "cc_sr": 0.2256,
+        "g2_ratio": 0.745,
+        "g3_std_ratio": 1.167,
+        "g4_grid_ratio": 1.237,
+        "g4_period": 6
+      }
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "stage": "sisr",
+  "axis_cfg": "external_sen2venus.py",
+  "ckpt_path": "experiments\\ckpts_s2v\\sisr\\ckpt_ep29.pt",
+  "n_samples": 13,
+  "val_dr": 4.273268222808838,
+  "predictors": {
+    "mean": {
+      "psnr": 12.503737311576183,
+      "ssim": -0.06324639138626,
+      "cc": 0.0,
+      "sam_deg": 88.91656243717247
+    },
+    "bicubic": {
+      "psnr": 35.33735285444649,
+      "ssim": 0.9491309102507823,
+      "cc": 0.826389863037556,
+      "sam_deg": 2.097609295712158
+    },
+    "model": {
+      "psnr": 35.46616977799596,
+      "ssim": 0.9560278805926269,
+      "cc": 0.7497699371832385,
+      "sam_deg": 2.0027498950415903
+    }
+  },
+  "pair_cc": 0.826389863037556,
+  "bias": 0.004472544130224448,
+  "std_ratio": 1.003210031069242,
+  "grid_ratio_model": 1.0899414190879235,
+  "grid_ratio_bicubic": 1.0581433406242957,
+  "grid_period_model": 8,
+  "grid_period_bicubic": 4,
+  "gain_db": 0.12881692354946495,
+  "delta_floor_db": 22.833615542870312,
+  "paired_psnr": {
+    "mean_diff": 0.12881692354946603,
+    "sd": 0.31695595108808844,
+    "ci95": [
+      -0.06271764076795189,
+      0.32035148786688394
+    ],
+    "t": 1.4653645764046337,
+    "p": 0.1685269747823879,
+    "cohen_d": 0.40641900903657496,
+    "n": 13
+  },
+  "gates": {
+    "G1_配对完整性": {
+      "verdict": "PASS",
+      "detail": "CC(bic,GT)=0.826 (阈值≥0.30)"
+    },
+    "G2_结构保真": {
+      "verdict": "PASS",
+      "detail": "model CC / bicubic CC = 0.91"
+    },
+    "G3_输出统计": {
+      "verdict": "PASS",
+      "detail": "std_ratio=1.00, |bias|=0.0045"
+    },
+    "G4_周期伪影": {
+      "verdict": "PASS",
+      "detail": "ratio=1.09 @ period=8px (bicubic 1.06 @ 4px)"
+    },
+    "G5_泄漏风险": {
+      "verdict": "PASS",
+      "detail": "未见泄漏"
+    }
+  },
+  "overall": "PASS",
+  "method": "sisr",
+  "n_test": 13,
+  "audit_gain_db": 0.12881692354946495,
+  "audit_p": 0.1685269747823879,
+  "passes_floor": true,
+  "g1": "PASS",
+  "g2": "PASS",
+  "g3": 1.003210031069242,
+  "g4": 1.0899414190879235,
+  "g5": "PASS"
+}

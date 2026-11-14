@@ -1,0 +1,81 @@
+{
+  "stage": "sisr",
+  "axis_cfg": "external_sen2venus_naryn_s123.py",
+  "ckpt_path": "experiments\\ckpts_s2v_naryn_s123\\sisr\\ckpt_ep29.pt",
+  "n_samples": 31,
+  "val_dr": 6.143783092498779,
+  "predictors": {
+    "mean": {
+      "psnr": 16.873783309159112,
+      "ssim": 0.14899540893916627,
+      "cc": 0.0,
+      "sam_deg": 78.51841952641298
+    },
+    "bicubic": {
+      "psnr": 38.985165309123914,
+      "ssim": 0.9536366538005808,
+      "cc": 0.9803291478825189,
+      "sam_deg": 3.698143805033733
+    },
+    "model": {
+      "psnr": 39.26179502708031,
+      "ssim": 0.9577635033493394,
+      "cc": 0.9791400247983794,
+      "sam_deg": 3.542179882091973
+    }
+  },
+  "pair_cc": 0.9803291478825189,
+  "bias": 0.03145438513808673,
+  "std_ratio": 0.9970818892601998,
+  "grid_ratio_model": 1.0957623643259848,
+  "grid_ratio_bicubic": 1.050516547695283,
+  "grid_period_model": 11,
+  "grid_period_bicubic": 10,
+  "gain_db": 0.27662971795639635,
+  "delta_floor_db": 22.111381999964802,
+  "paired_psnr": {
+    "mean_diff": 0.27662971795640023,
+    "sd": 0.7793754885443329,
+    "ci95": [
+      -0.009247519233532342,
+      0.5625069551463329
+    ],
+    "t": 1.9762092957453257,
+    "p": 0.057389507875765605,
+    "cohen_d": 0.35493766743045935,
+    "n": 31
+  },
+  "gates": {
+    "G1_配对完整性": {
+      "verdict": "PASS",
+      "detail": "CC(bic,GT)=0.980 (阈值≥0.30)"
+    },
+    "G2_结构保真": {
+      "verdict": "PASS",
+      "detail": "model CC / bicubic CC = 1.00"
+    },
+    "G3_输出统计": {
+      "verdict": "PASS",
+      "detail": "std_ratio=1.00, |bias|=0.0315"
+    },
+    "G4_周期伪影": {
+      "verdict": "PASS",
+      "detail": "ratio=1.10 @ period=11px (bicubic 1.05 @ 10px)"
+    },
+    "G5_泄漏风险": {
+      "verdict": "PASS",
+      "detail": "未见泄漏"
+    }
+  },
+  "overall": "PASS",
+  "method": "sisr",
+  "n_test": 31,
+  "audit_gain_db": 0.27662971795639635,
+  "audit_p": 0.057389507875765605,
+  "passes_floor": true,
+  "g1": "PASS",
+  "g2": "PASS",
+  "g3": 0.9970818892601998,
+  "g4": 1.0957623643259848,
+  "g5": "PASS"
+}

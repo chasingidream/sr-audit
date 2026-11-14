@@ -1,0 +1,92 @@
+{
+  "standard": "SR-Audit Report Standard v1",
+  "input": {
+    "method": "CrossAttnAlign (mtxa_mis_xa)",
+    "task": "WorldStrat 6.63x cross-sensor, misaligned, 5-frame",
+    "scale": 7,
+    "val_dr": 15.06,
+    "split": "val",
+    "n_test": 60
+  },
+  "stats": {
+    "n_test": 60,
+    "psnr": {
+      "mean_floor": 32.9753,
+      "bicubic": 30.6819,
+      "model": 29.123
+    },
+    "delta_floor_db": -2.2934,
+    "floor_gap_db": -3.8523,
+    "gain_db": -1.5589,
+    "paired": {
+      "n": 60,
+      "mean_diff": -1.5589,
+      "ci": [
+        -1.6761,
+        -1.4418
+      ],
+      "p": 1.4384321121423006e-34,
+      "cohen_d": -3.4369,
+      "t_stat": -26.622,
+      "df": 59
+    },
+    "aux": {
+      "pair_cc": 0.3025,
+      "std_ratio": 0.7588
+    }
+  },
+  "gates": {
+    "g1": {
+      "verdict": "PASS",
+      "detail": "CC(bic,GT)=0.302 (阈值>=0.30)"
+    },
+    "g2": {
+      "verdict": "WARN",
+      "detail": "model CC / bicubic CC = 0.76"
+    },
+    "g3": {
+      "verdict": "PASS",
+      "detail": "std_ratio=0.76, |bias|=0.8509"
+    },
+    "g4": {
+      "verdict": "PASS",
+      "detail": "ratio=1.01 @ period=6px"
+    },
+    "g5": {
+      "verdict": "PASS",
+      "detail": "未见泄漏"
+    }
+  },
+  "audit": {
+    "method": "CrossAttnAlign (mtxa_mis_xa)",
+    "task": "WorldStrat 6.63x cross-sensor, misaligned, 5-frame",
+    "n_test": 60,
+    "split": "val",
+    "gate_verdict": "WARN",
+    "credibility": "QUALIFIED",
+    "regime": "floor-failure",
+    "audit_gain_db": -1.5589,
+    "audit_ci": [
+      -1.6761,
+      -1.4418
+    ],
+    "audit_p": 1.4384321121423006e-34,
+    "audit_d": -3.4369,
+    "passes_floor": false,
+    "floor_gap_db": -3.8523,
+    "delta_floor_db": -2.2934,
+    "gates": {
+      "g1": "PASS",
+      "g2": "WARN",
+      "g3": "PASS",
+      "g4": "PASS",
+      "g5": "PASS"
+    },
+    "reasons": [
+      "gate WARN: G2",
+      "baseline collapsed: Δ_floor=-2.29 dB <= 0, model−bicubic not interpretable as skill",
+      "model does not clear the mean-predictor skill floor"
+    ],
+    "headline": "CrossAttnAlign (mtxa_mis_xa) | regime=floor-failure | badge=QUALIFIED | gain=-1.56 dB | p=1.44e-34 | Δ_floor=-2.29 dB"
+  }
+}

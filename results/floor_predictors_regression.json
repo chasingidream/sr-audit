@@ -1,0 +1,70 @@
+{
+ "n": 3927,
+ "features": [
+  {
+   "feature": "ndvi_mean",
+   "label": "NDVI (mean)",
+   "beta_std": -1.2341,
+   "t": -9.877,
+   "p": 9.625151441061543e-23,
+   "pearson": -0.0789,
+   "spearman": -0.0782
+  },
+  {
+   "feature": "ndvi_std",
+   "label": "NDVI (spatial s.d.)",
+   "beta_std": 1.2089,
+   "t": 18.307,
+   "p": 6.684659350372525e-72,
+   "pearson": 0.309,
+   "spearman": 0.3401
+  },
+  {
+   "feature": "bright_lr",
+   "label": "LR visible brightness",
+   "beta_std": 0.7286,
+   "t": 5.716,
+   "p": 1.1741435221101641e-08,
+   "pearson": 0.1735,
+   "spearman": 0.2343
+  },
+  {
+   "feature": "spec_het",
+   "label": "spectral heterogeneity (12-band s.d.)",
+   "beta_std": 0.7033,
+   "t": 5.571,
+   "p": 2.699686922650648e-08,
+   "pearson": 0.0864,
+   "spearman": -0.0393
+  },
+  {
+   "feature": "bright_hr",
+   "label": "HR brightness",
+   "beta_std": -2.5327,
+   "t": -31.192,
+   "p": 5.466649178387473e-191,
+   "pearson": -0.3019,
+   "spearman": 0.1895
+  },
+  {
+   "feature": "texture_hr",
+   "label": "HR texture energy (|∇|)",
+   "beta_std": 1.3203,
+   "t": 17.332,
+   "p": 6.734144356313323e-65,
+   "pearson": 0.1095,
+   "spearman": 0.3069
+  }
+ ],
+ "r2": 0.3284,
+ "adj_r2": 0.3274,
+ "ipcc_r2": 0.1052,
+ "ipcc_adj_r2": 0.1036,
+ "n_ipcc_classes": 8,
+ "compact_features": [
+  "bright_hr",
+  "ndvi_std",
+  "texture_hr"
+ ],
+ "compact_r2": 0.2162
+}

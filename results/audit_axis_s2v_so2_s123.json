@@ -1,0 +1,81 @@
+{
+  "stage": "sisr",
+  "axis_cfg": "external_sen2venus_so2_s123.py",
+  "ckpt_path": "experiments\\ckpts_s2v_so2_s123\\sisr\\ckpt_ep29.pt",
+  "n_samples": 74,
+  "val_dr": 5.905120074748993,
+  "predictors": {
+    "mean": {
+      "psnr": 16.63038925374177,
+      "ssim": 0.05591849920247014,
+      "cc": 0.0,
+      "sam_deg": 80.71523835968824
+    },
+    "bicubic": {
+      "psnr": 34.3468931244035,
+      "ssim": 0.9081373211754377,
+      "cc": 0.8854202769678605,
+      "sam_deg": 4.572014122424441
+    },
+    "model": {
+      "psnr": 36.19130189308198,
+      "ssim": 0.9315282249773386,
+      "cc": 0.9103921029571478,
+      "sam_deg": 3.7770912727497845
+    }
+  },
+  "pair_cc": 0.8854202769678605,
+  "bias": 0.018543842984866853,
+  "std_ratio": 0.9943189854557449,
+  "grid_ratio_model": 1.10512773410694,
+  "grid_ratio_bicubic": 1.0822948314048149,
+  "grid_period_model": 11,
+  "grid_period_bicubic": 11,
+  "gain_db": 1.844408768678477,
+  "delta_floor_db": 17.71650387066173,
+  "paired_psnr": {
+    "mean_diff": 1.844408768678472,
+    "sd": 1.129951367470704,
+    "ci95": [
+      1.5826202687257576,
+      2.1061972686311865
+    ],
+    "t": 14.041492944136959,
+    "p": 1.958763077774886e-22,
+    "cohen_d": 1.6322903991939206,
+    "n": 74
+  },
+  "gates": {
+    "G1_配对完整性": {
+      "verdict": "PASS",
+      "detail": "CC(bic,GT)=0.885 (阈值≥0.30)"
+    },
+    "G2_结构保真": {
+      "verdict": "PASS",
+      "detail": "model CC / bicubic CC = 1.03"
+    },
+    "G3_输出统计": {
+      "verdict": "PASS",
+      "detail": "std_ratio=0.99, |bias|=0.0185"
+    },
+    "G4_周期伪影": {
+      "verdict": "PASS",
+      "detail": "ratio=1.11 @ period=11px (bicubic 1.08 @ 11px)"
+    },
+    "G5_泄漏风险": {
+      "verdict": "PASS",
+      "detail": "未见泄漏"
+    }
+  },
+  "overall": "PASS",
+  "method": "sisr",
+  "n_test": 74,
+  "audit_gain_db": 1.844408768678477,
+  "audit_p": 1.958763077774886e-22,
+  "passes_floor": true,
+  "g1": "PASS",
+  "g2": "PASS",
+  "g3": 0.9943189854557449,
+  "g4": 1.10512773410694,
+  "g5": "PASS"
+}

@@ -1,0 +1,50 @@
+{
+  "method": "RAMS (Salvetti et al., RS 2020, 12(14):2207; 32f/3D+N12+r8, 多帧 MFSR)",
+  "task": "PROBA-V 轴多帧 MFSR (同传感器 300m->100m, 3x, T=9, 单波段 RED)",
+  "n_test": 60,
+  "split": "PROBA-V train, val=后10% (deterministic crop); 与三轴 mtxa 系列同切分",
+  "orig_gain_db": null,
+  "audit_gain_db": 2.886,
+  "audit_ci": [
+    1.893,
+    3.878
+  ],
+  "audit_p": 0.0,
+  "audit_d": 0.736,
+  "passes_floor": true,
+  "floor_gap_db": 4.308,
+  "g1": "PASS",
+  "g2": "PASS",
+  "g3": "0.95",
+  "g4": "PASS",
+  "g5": "PASS",
+  "note": "model(RAMS) 31.12 / bicubic(frame0) 28.24 / mean-floor 26.82 dB. 审计结论(逐样本配对): RAMS-bicubic +2.89 dB (p=0.0000, d=+0.74). 越过技能地板, 真实技能成立; SR-Audit G1=PASS(CC(bic,GT)=0.810) G2=PASS(CC比=1.04) G3=PASS(std_ratio=0.95) G4=PASS(grid=1.92) G5=PASS. 审计轴 = PROBA-V(同传感器+多帧+3x, RAMS 原生轴；官方权重/结构均为 PROBA-V 单波段 3x, 无法不强改结构地搬到 WorldStrat 6.63x RGB)。本条目为该轴正向对照：若审计协议在此'真有增益'的轴确认 RAMS 仍显著过 bicubic 且过地板, 则证明 SR-Audit 非'一切皆杀'的锤子；其与三轴 mtxa 系列(WorldStrat 6.63x 不过地板) 的对比即'真增益 vs 伪增益'的分界。",
+  "detail": {
+    "psnr_model_mean": 31.123,
+    "psnr_bic_mean": 28.237,
+    "psnr_floor_mean": 26.815,
+    "g1_pair_cc": 0.8103,
+    "g2_cc_ratio": 1.0401,
+    "std_ratio_model_over_gt": 0.9547,
+    "grid_ratio_model": 1.917,
+    "paired": {
+      "n": 60,
+      "mean": 2.8856,
+      "sd": 3.921,
+      "t": 5.701,
+      "p": 0.0,
+      "d": 0.736,
+      "ci_lo": 1.8935,
+      "ci_hi": 3.8778
+    },
+    "arch": {
+      "filters": 32,
+      "kernel": 3,
+      "channels": 9,
+      "r": 8,
+      "N": 12
+    },
+    "ref_gain_our_axis_db": 2.332,
+    "device": "cuda"
+  }
+}

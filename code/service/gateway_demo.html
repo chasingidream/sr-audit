@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>SR 统一网关 — 出图 + 验真 + 一键</title>
+<style>
+  :root { --bg:#f6f7f9; --card:#ffffff; --ink:#1c2330; --mut:#5b6472; --line:#e3e6ec;
+          --ok:#177a3d; --warn:#9a6700; --bad:#b3261e; --acc:#2456c8; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:24px; font:14px/1.6 "Segoe UI","Microsoft YaHei",sans-serif;
+         background:var(--bg); color:var(--ink); }
+  h1 { font-size:20px; margin:0 0 4px; }
+  .sub { color:var(--mut); margin-bottom:18px; }
+  .tabs { display:flex; gap:8px; margin-bottom:14px; }
+  .tab { padding:8px 18px; border:1px solid var(--line); border-radius:8px 8px 0 0;
+         background:#eceef2; cursor:pointer; }
+  .tab.on { background:var(--card); border-bottom-color:var(--card); font-weight:600; }
+  .panel { display:none; background:var(--card); border:1px solid var(--line);
+           border-radius:0 10px 10px 10px; padding:20px; }
+  .panel.on { display:block; }
+  label { display:block; margin:10px 0 4px; color:var(--mut); font-size:13px; }
+  select, input[type=text], textarea { width:100%; padding:8px; border:1px solid var(--line);
+         border-radius:6px; font:inherit; background:#fff; }
+  textarea { height:180px; font-family:Consolas,monospace; font-size:12px; }
+  button { margin-top:12px; padding:9px 20px; border:0; border-radius:8px;
+           background:var(--acc); color:#fff; cursor:pointer; font-size:14px; }
+  button:disabled { opacity:.5; cursor:wait; }
+  .row { display:flex; gap:16px; flex-wrap:wrap; }
+  .col { flex:1 1 320px; min-width:300px; }
+  img.result { max-width:100%; border:1px solid var(--line); border-radius:8px; margin-top:10px;
+               image-rendering:pixelated; }
+  .badge { display:inline-block; padding:3px 12px; border-radius:999px; color:#fff;
+           font-weight:600; font-size:13px; }
+  .PASS,.VERIFIED { background:var(--ok); } .QUALIFIED,.WARN { background:var(--warn); }
+  .FAIL,.VOID { background:var(--bad); } .UNVERIFIED { background:var(--mut); }
+  table { border-collapse:collapse; width:100%; margin-top:10px; font-size:13px; }
+  td,th { border:1px solid var(--line); padding:6px 10px; text-align:left; }
+  .meta { color:var(--mut); font-size:12px; margin-top:6px; white-space:pre-wrap; }
+  .note { background:#f2f4f8; border-left:3px solid var(--acc); padding:8px 12px;
+          border-radius:0 6px 6px 0; font-size:12.5px; color:var(--mut); margin-top:10px; }
+</style>
+</head>
+<body>
+<h1>SR 统一网关</h1>
+<div class="sub">出图（模型层，Tier-B 真实权重）＋ 验真（协议层，G1–G5 徽章）＋ 一键（出图 + 无 GT 预检）——图超分出来，不代表它的增益是真的。</div>
+
+<div class="tabs">
+  <div class="tab on" data-p="p1">① 出图 /sr</div>
+  <div class="tab" data-p="p2">② 验真 /audit</div>
+  <div class="tab" data-p="p3">③ 一键 /sr_audit</div>
+</div>
+
+<!-- ① 出图 -->
+<div class="panel on" id="p1">
+  <div class="row">
+    <div class="col">
+      <label>模型轴</label>
+      <select id="model1"><option value="ws">ws — WorldStrat 6.63×</option><option value="probav">probav — PROBA-V 3×（亮度近似）</option></select>
+      <label>低分辨率图片（PNG/JPG）</label>
+      <input type="file" id="file1" accept="image/*">
+      <label><input type="checkbox" id="cmp1" checked> 返回 [bicubic | 模型SR] 并排对比图</label>
+      <button id="go1">上传并超分</button>
+      <div class="meta" id="meta1"></div>
+    </div>
+    <div class="col"><img class="result" id="img1" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ② 验真 -->
+<div class="panel" id="p2">
+  <div class="row">
+    <div class="col">
+      <label>逐场景评测证据（JSON；点击「载入示例」填充 WorldStrat floor-failure 复刻）</label>
+      <textarea id="audit_in" placeholder='{"method":"...","scale":7,"val_dr":15.06,"scenes":[...]}'></textarea>
+      <button id="load_ex">载入示例</button>
+      <button id="go2" style="margin-left:8px">提交 /audit 验真</button>
+      <div class="note">输入是任一方法在验证集上的逐场景指标（PSNR/CC/std/网格比），不需要权重与 GPU；服务输出与论文同一套 derive() 判定。</div>
+    </div>
+    <div class="col" id="audit_out"></div>
+  </div>
+</div>
+
+<!-- ③ 一键 -->
+<div class="panel" id="p3">
+  <div class="row">
+    <div class="col">
+      <label>模型轴</label>
+      <select id="model3"><option value="ws">ws — WorldStrat 6.63×</option><option value="probav">probav — PROBA-V 3×（亮度近似）</option></select>
+      <label>低分辨率图片</label>
+      <input type="file" id="file3" accept="image/*">
+      <button id="go3">超分 + 无 GT 预检</button>
+      <div class="meta" id="meta3"></div>
+      <div class="note">返回 SR 图（base64）＋ P1–P4 预检徽章。<b>P1–P4 不是论文 G1–G5</b>（后者需要 GT 配对评测）；它只回答"这张图本身有没有结构发散 / 统计异常 / 周期伪影"。</div>
+    </div>
+    <div class="col"><img class="result" id="img3" style="display:none"><div id="pc3"></div></div>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(x => x.classList.remove('on'));
+  t.classList.add('on'); $(t.dataset.p).classList.add('on');
+});
+
+function badge(v){ return '<span class="badge ' + v + '">' + v + '</span>'; }
+
+// ① 出图
+$('go1').onclick = async () => {
+  const f = $('file1').files[0];
+  if (!f) return alert('先选择一张低分辨率图片');
+  $('go1').disabled = true; $('meta1').textContent = '推理中…';
+  const fd = new FormData(); fd.append('image', f);
+  try {
+    const r = await fetch('/sr?model=' + $('model1').value + ($('cmp1').checked ? '&compare=1' : ''), {method:'POST', body:fd});
+    if (!r.ok) throw new Error((await r.json()).detail || r.status);
+    $('img1').src = URL.createObjectURL(await r.blob()); $('img1').style.display = 'block';
+    $('meta1').textContent = 'X-SR-Meta: ' + JSON.stringify(JSON.parse(atob(r.headers.get('X-SR-Meta') || 'e30=')));
+  } catch (e) { $('meta1').textContent = '失败: ' + e.message; }
+  $('go1').disabled = false;
+};
+
+// ② 验真
+$('load_ex').onclick = async () => { $('audit_in').value = await (await fetch('/example/audit')).text(); };
+$('go2').onclick = async () => {
+  let payload; try { payload = JSON.parse($('audit_in').value); } catch (e) { return alert('JSON 解析失败: ' + e.message); }
+  $('go2').disabled = true;
+  try {
+    const r = await (await fetch('/audit', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)})).json();
+    const a = r.audit || {}, g = r.gates || {}, s = r.stats || {};
+    let html = '<h3>' + badge(a.credibility || '?') + ' &nbsp;regime=' + (a.regime || '?') + '</h3>';
+    html += '<div class="meta">' + (a.headline || '') + '</div>';
+    if (s.paired) html += '<table><tr><th>配对统计</th><th>值</th></tr>' +
+      '<tr><td>gain (model−bicubic)</td><td>' + s.paired.mean_diff?.toFixed(3) + ' dB</td></tr>' +
+      '<tr><td>95% CI</td><td>[' + s.paired.ci?.[0]?.toFixed(3) + ', ' + s.paired.ci?.[1]?.toFixed(3) + ']</td></tr>' +
+      '<tr><td>p / Cohen\'s d</td><td>' + s.paired.p?.toExponential(2) + ' / ' + s.paired.cohen_d?.toFixed(2) + '</td></tr>' +
+      '<tr><td>Δ_floor</td><td>' + (s.delta_floor_db ?? '?') + ' dB</td></tr></table>';
+    html += '<table><tr><th>门</th><th>判定</th><th>依据</th></tr>';
+    for (const k in g) html += '<tr><td>' + k + '</td><td>' + badge(g[k].verdict) + '</td><td>' + (g[k].detail || '') + '</td></tr>';
+    html += '</table>';
+    $('audit_out').innerHTML = html;
+  } catch (e) { $('audit_out').innerHTML = '失败: ' + e.message; }
+  $('go2').disabled = false;
+};
+
+// ③ 一键
+$('go3').onclick = async () => {
+  const f = $('file3').files[0];
+  if (!f) return alert('先选择一张低分辨率图片');
+  $('go3').disabled = true; $('meta3').textContent = '推理中…';
+  const fd = new FormData(); fd.append('image', f);
+  try {
+    const r = await (await fetch('/sr_audit?model=' + $('model3').value + '&compare=1', {method:'POST', body:fd})).json();
+    if (r.error) throw new Error(r.detail || r.error);
+    $('img3').src = 'data:image/png;base64,' + (r.compare_image_base64 || r.sr_image_base64);
+    $('img3').style.display = 'block';
+    const p = r.precheck;
+    let html = '<h3>' + badge(p.verdict) + ' &nbsp;无 GT 预检</h3><div class="meta">' + p.headline + '</div><table><tr><th>预检</th><th>判定</th><th>依据</th></tr>';
+    for (const k in p.gates) html += '<tr><td>' + k + '</td><td>' + badge(p.gates[k].verdict) + '</td><td>' + p.gates[k].detail + '</td></tr>';
+    html += '</table><div class="note">' + p.note + '</div>';
+    $('pc3').innerHTML = html;
+    $('meta3').textContent = 'meta: ' + JSON.stringify(r.meta);
+  } catch (e) { $('meta3').textContent = '失败: ' + e.message; }
+  $('go3').disabled = false;
+};
+</script>
+</body>
+</html>

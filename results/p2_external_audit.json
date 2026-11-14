@@ -1,0 +1,286 @@
+{
+  "standard": "SR-Audit Report Standard v1 (P2-3 external)",
+  "n_cards": 3,
+  "cards": [
+    {
+      "method": "Demo-Positive (gain +2 dB)",
+      "task": "synthetic smoke",
+      "n_test": 40,
+      "split": "demo",
+      "g1": "PASS",
+      "g2": "PASS",
+      "g3": 0.982016035012332,
+      "g4": 1.110140749143595,
+      "g5": "PASS",
+      "delta_floor_db": 13.15,
+      "passes_floor": true,
+      "floor_gap_db": 15.137,
+      "audit_gain_db": 1.988,
+      "audit_p": 3.2428979181141644e-108,
+      "audit_ci": [
+        1.987,
+        1.989
+      ],
+      "audit_d": 534.131,
+      "_derived": {
+        "method": "Demo-Positive (gain +2 dB)",
+        "task": "synthetic smoke",
+        "n_test": 40,
+        "split": "demo",
+        "gate_verdict": "PASS",
+        "credibility": "VERIFIED",
+        "regime": "positive",
+        "audit_gain_db": 1.988,
+        "audit_ci": [
+          1.987,
+          1.989
+        ],
+        "audit_p": 3.2428979181141644e-108,
+        "audit_d": 534.131,
+        "passes_floor": true,
+        "floor_gap_db": 15.137,
+        "delta_floor_db": 13.15,
+        "gates": {
+          "g1": "PASS",
+          "g2": "PASS",
+          "g3": "PASS",
+          "g4": "PASS",
+          "g5": "PASS"
+        },
+        "reasons": [
+          "gain significant and clears the skill floor -> genuine skill"
+        ],
+        "headline": "Demo-Positive (gain +2 dB) | regime=positive | badge=VERIFIED | gain=+1.99 dB | p=3.24e-108 | Δ_floor=+13.15 dB"
+      },
+      "derived": {
+        "method": "Demo-Positive (gain +2 dB)",
+        "task": "synthetic smoke",
+        "n_test": 40,
+        "split": "demo",
+        "gate_verdict": "PASS",
+        "credibility": "VERIFIED",
+        "regime": "positive",
+        "audit_gain_db": 1.988,
+        "audit_ci": [
+          1.987,
+          1.989
+        ],
+        "audit_p": 3.2428979181141644e-108,
+        "audit_d": 534.131,
+        "passes_floor": true,
+        "floor_gap_db": 15.137,
+        "delta_floor_db": 13.15,
+        "gates": {
+          "g1": "PASS",
+          "g2": "PASS",
+          "g3": "PASS",
+          "g4": "PASS",
+          "g5": "PASS"
+        },
+        "reasons": [
+          "gain significant and clears the skill floor -> genuine skill"
+        ],
+        "headline": "Demo-Positive (gain +2 dB) | regime=positive | badge=VERIFIED | gain=+1.99 dB | p=3.24e-108 | Δ_floor=+13.15 dB"
+      },
+      "detail": {
+        "psnr_bicubic_mean": 30.117,
+        "psnr_sr_mean": 32.104,
+        "psnr_mean_mean": 16.967,
+        "cc_bicubic": 0.9745,
+        "cc_sr": 0.9839,
+        "g2_ratio": 1.01,
+        "g3_std_ratio": 0.982,
+        "g4_grid_ratio": 1.11,
+        "g4_period": 3
+      }
+    },
+    {
+      "method": "Demo-Saturated (gain~0, not significant)",
+      "task": "synthetic smoke",
+      "n_test": 40,
+      "split": "demo",
+      "g1": "PASS",
+      "g2": "PASS",
+      "g3": 0.9822530972104737,
+      "g4": 1.003896739683202,
+      "g5": "PASS",
+      "delta_floor_db": 13.135,
+      "passes_floor": true,
+      "floor_gap_db": 13.135,
+      "audit_gain_db": 0.0,
+      "audit_p": 1.0,
+      "audit_ci": [
+        0.0,
+        0.0
+      ],
+      "audit_d": 0.0,
+      "_derived": {
+        "method": "Demo-Saturated (gain~0, not significant)",
+        "task": "synthetic smoke",
+        "n_test": 40,
+        "split": "demo",
+        "gate_verdict": "PASS",
+        "credibility": "VERIFIED",
+        "regime": "saturated",
+        "audit_gain_db": 0.0,
+        "audit_ci": [
+          0.0,
+          0.0
+        ],
+        "audit_p": 1.0,
+        "audit_d": 0.0,
+        "passes_floor": true,
+        "floor_gap_db": 13.135,
+        "delta_floor_db": 13.135,
+        "gates": {
+          "g1": "PASS",
+          "g2": "PASS",
+          "g3": "PASS",
+          "g4": "PASS",
+          "g5": "PASS"
+        },
+        "reasons": [
+          "gain over bicubic not significant (p=1) -> no discriminative headroom"
+        ],
+        "headline": "Demo-Saturated (gain~0, not significant) | regime=saturated | badge=VERIFIED | gain=+0.00 dB | p=1 | Δ_floor=+13.13 dB"
+      },
+      "derived": {
+        "method": "Demo-Saturated (gain~0, not significant)",
+        "task": "synthetic smoke",
+        "n_test": 40,
+        "split": "demo",
+        "gate_verdict": "PASS",
+        "credibility": "VERIFIED",
+        "regime": "saturated",
+        "audit_gain_db": 0.0,
+        "audit_ci": [
+          0.0,
+          0.0
+        ],
+        "audit_p": 1.0,
+        "audit_d": 0.0,
+        "passes_floor": true,
+        "floor_gap_db": 13.135,
+        "delta_floor_db": 13.135,
+        "gates": {
+          "g1": "PASS",
+          "g2": "PASS",
+          "g3": "PASS",
+          "g4": "PASS",
+          "g5": "PASS"
+        },
+        "reasons": [
+          "gain over bicubic not significant (p=1) -> no discriminative headroom"
+        ],
+        "headline": "Demo-Saturated (gain~0, not significant) | regime=saturated | badge=VERIFIED | gain=+0.00 dB | p=1 | Δ_floor=+13.13 dB"
+      },
+      "detail": {
+        "psnr_bicubic_mean": 29.981,
+        "psnr_sr_mean": 29.981,
+        "psnr_mean_mean": 16.846,
+        "cc_bicubic": 0.9741,
+        "cc_sr": 0.9741,
+        "g2_ratio": 1.0,
+        "g3_std_ratio": 0.982,
+        "g4_grid_ratio": 1.004,
+        "g4_period": 3
+      }
+    },
+    {
+      "method": "Demo-G1FAIL (decorrelated LR)",
+      "task": "synthetic smoke",
+      "n_test": 40,
+      "split": "demo",
+      "g1": "FAIL",
+      "g2": "PASS",
+      "g3": 0.8755891610562039,
+      "g4": 1.1233832704455604,
+      "g5": "PASS",
+      "delta_floor_db": -4.411,
+      "passes_floor": false,
+      "floor_gap_db": -2.411,
+      "audit_gain_db": 2.0,
+      "audit_p": 4.479740708066161e-141,
+      "audit_ci": [
+        2.0,
+        2.0
+      ],
+      "audit_d": 3717.099,
+      "_derived": {
+        "method": "Demo-G1FAIL (decorrelated LR)",
+        "task": "synthetic smoke",
+        "n_test": 40,
+        "split": "demo",
+        "gate_verdict": "FAIL",
+        "credibility": "VOID",
+        "regime": "floor-failure",
+        "audit_gain_db": 2.0,
+        "audit_ci": [
+          2.0,
+          2.0
+        ],
+        "audit_p": 4.479740708066161e-141,
+        "audit_d": 3717.099,
+        "passes_floor": false,
+        "floor_gap_db": -2.411,
+        "delta_floor_db": -4.411,
+        "gates": {
+          "g1": "FAIL",
+          "g2": "PASS",
+          "g3": "PASS",
+          "g4": "PASS",
+          "g5": "PASS"
+        },
+        "reasons": [
+          "gate FAIL: G1 -> numbers void",
+          "baseline collapsed: Δ_floor=-4.41 dB <= 0, model−bicubic not interpretable as skill",
+          "model does not clear the mean-predictor skill floor"
+        ],
+        "headline": "Demo-G1FAIL (decorrelated LR) | regime=floor-failure | badge=VOID | gain=+2.00 dB | p=4.48e-141 | Δ_floor=-4.41 dB"
+      },
+      "derived": {
+        "method": "Demo-G1FAIL (decorrelated LR)",
+        "task": "synthetic smoke",
+        "n_test": 40,
+        "split": "demo",
+        "gate_verdict": "FAIL",
+        "credibility": "VOID",
+        "regime": "floor-failure",
+        "audit_gain_db": 2.0,
+        "audit_ci": [
+          2.0,
+          2.0
+        ],
+        "audit_p": 4.479740708066161e-141,
+        "audit_d": 3717.099,
+        "passes_floor": false,
+        "floor_gap_db": -2.411,
+        "delta_floor_db": -4.411,
+        "gates": {
+          "g1": "FAIL",
+          "g2": "PASS",
+          "g3": "PASS",
+          "g4": "PASS",
+          "g5": "PASS"
+        },
+        "reasons": [
+          "gate FAIL: G1 -> numbers void",
+          "baseline collapsed: Δ_floor=-4.41 dB <= 0, model−bicubic not interpretable as skill",
+          "model does not clear the mean-predictor skill floor"
+        ],
+        "headline": "Demo-G1FAIL (decorrelated LR) | regime=floor-failure | badge=VOID | gain=+2.00 dB | p=4.48e-141 | Δ_floor=-4.41 dB"
+      },
+      "detail": {
+        "psnr_bicubic_mean": 12.416,
+        "psnr_sr_mean": 14.416,
+        "psnr_mean_mean": 16.827,
+        "cc_bicubic": 0.0111,
+        "cc_sr": 0.3332,
+        "g2_ratio": 29.927,
+        "g3_std_ratio": 0.876,
+        "g4_grid_ratio": 1.123,
+        "g4_period": 3
+      }
+    }
+  ]
+}

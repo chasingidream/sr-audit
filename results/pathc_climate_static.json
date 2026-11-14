@@ -1,0 +1,279 @@
+{
+ "n": 3927,
+ "n_climate": 3927,
+ "n_dem": 3927,
+ "clim_keys": [
+  "log_precip",
+  "t_mean_ann",
+  "t_seasonality",
+  "precip_cv",
+  "precip_seasonality"
+ ],
+ "orthogonality": {
+  "log_precip": {
+   "max_abs_r_vs_dem": 0.195971354233751,
+   "r_vs_texture": -0.17987150452647357,
+   "r_vs_dfloor": -0.08030071072469673,
+   "p_vs_dfloor": 4.6884471133767386e-07,
+   "n": 3927
+  },
+  "t_mean_ann": {
+   "max_abs_r_vs_dem": 0.3561493072593638,
+   "r_vs_texture": -0.20064962650010468,
+   "r_vs_dfloor": 0.13847622659351067,
+   "p_vs_dfloor": 2.8571125734736473e-18,
+   "n": 3927
+  },
+  "t_seasonality": {
+   "max_abs_r_vs_dem": 0.3852214363236484,
+   "r_vs_texture": 0.2174285929466705,
+   "r_vs_dfloor": 0.0641424063154973,
+   "p_vs_dfloor": 5.760893782740737e-05,
+   "n": 3927
+  },
+  "precip_cv": {
+   "max_abs_r_vs_dem": 0.22570592806862064,
+   "r_vs_texture": 0.013937647811465786,
+   "r_vs_dfloor": 0.10010490927450734,
+   "p_vs_dfloor": 3.237591411124713e-10,
+   "n": 3927
+  },
+  "precip_seasonality": {
+   "max_abs_r_vs_dem": 0.3087140634400056,
+   "r_vs_texture": -0.16796384404611514,
+   "r_vs_dfloor": -0.009506915859820251,
+   "p_vs_dfloor": 0.5514544416135545,
+   "n": 3927
+  }
+ },
+ "featsets": {
+  "P_base(-tex,-dem,-clim)": {
+   "p": 11,
+   "n": 3927,
+   "in_r2": 0.7810142284222692,
+   "cv_30x60": 0.6151479865061669,
+   "cv_leave_campaign": 0.4320447184652443,
+   "per_campaign": {
+    "ASMSpotter": 0.5510810515671904,
+    "Amnesty POI": 0.546591925083455,
+    "Landcover": 0.3534241647583245,
+    "UNHCR": 0.38448694122944505
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs"
+   ]
+  },
+  "T_base+tex": {
+   "p": 12,
+   "n": 3927,
+   "in_r2": 0.8141650556293132,
+   "cv_30x60": 0.6843537623422948,
+   "cv_leave_campaign": 0.47417573064218466,
+   "per_campaign": {
+    "ASMSpotter": 0.6882525798778292,
+    "Amnesty POI": 0.6719513518145622,
+    "Landcover": 0.35268975879054953,
+    "UNHCR": 0.5027287814252221
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "log_tex",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs"
+   ]
+  },
+  "D_base+dem": {
+   "p": 17,
+   "n": 3927,
+   "in_r2": 0.7916357919491772,
+   "cv_30x60": 0.6224216599997003,
+   "cv_leave_campaign": 0.3840984138809287,
+   "per_campaign": {
+    "ASMSpotter": 0.5405106921835694,
+    "Amnesty POI": 0.5138371384430911,
+    "Landcover": 0.28351331550720305,
+    "UNHCR": 0.38101570501397286
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs",
+    "dem_std",
+    "slope_mean",
+    "tri_mean",
+    "relief",
+    "roughness",
+    "dem_mean"
+   ]
+  },
+  "C_base+clim": {
+   "p": 16,
+   "n": 3927,
+   "in_r2": 0.7938732874896298,
+   "cv_30x60": 0.6089459466861797,
+   "cv_leave_campaign": 0.37487708706539946,
+   "per_campaign": {
+    "ASMSpotter": 0.49168256013362877,
+    "Amnesty POI": 0.5227933776611231,
+    "Landcover": 0.2869555478491772,
+    "UNHCR": 0.342031627674797
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs",
+    "log_precip",
+    "t_mean_ann",
+    "t_seasonality",
+    "precip_cv",
+    "precip_seasonality"
+   ]
+  },
+  "TD_base+tex+dem": {
+   "p": 18,
+   "n": 3927,
+   "in_r2": 0.8187171942857531,
+   "cv_30x60": 0.6790858568042843,
+   "cv_leave_campaign": 0.5080361660311628,
+   "per_campaign": {
+    "ASMSpotter": 0.7354977196791976,
+    "Amnesty POI": 0.7015639403595006,
+    "Landcover": 0.39015470704959476,
+    "UNHCR": 0.5082210432355734
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "log_tex",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs",
+    "dem_std",
+    "slope_mean",
+    "tri_mean",
+    "relief",
+    "roughness",
+    "dem_mean"
+   ]
+  },
+  "TC_base+tex+clim": {
+   "p": 17,
+   "n": 3927,
+   "in_r2": 0.8180441766152527,
+   "cv_30x60": 0.6804601292457526,
+   "cv_leave_campaign": 0.46410234464452993,
+   "per_campaign": {
+    "ASMSpotter": 0.6723507380049458,
+    "Amnesty POI": 0.6415636816577908,
+    "Landcover": 0.34939428574306863,
+    "UNHCR": 0.46746797060857304
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "log_tex",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs",
+    "log_precip",
+    "t_mean_ann",
+    "t_seasonality",
+    "precip_cv",
+    "precip_seasonality"
+   ]
+  },
+  "TDC_all": {
+   "p": 23,
+   "n": 3927,
+   "in_r2": 0.8238668317169343,
+   "cv_30x60": 0.6719757797743116,
+   "cv_leave_campaign": 0.4484138723824962,
+   "per_campaign": {
+    "ASMSpotter": 0.7164400974853946,
+    "Amnesty POI": 0.6595612779654625,
+    "Landcover": 0.30810751752254584,
+    "UNHCR": 0.4830988547520261
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "log_tex",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs",
+    "dem_std",
+    "slope_mean",
+    "tri_mean",
+    "relief",
+    "roughness",
+    "dem_mean",
+    "log_precip",
+    "t_mean_ann",
+    "t_seasonality",
+    "precip_cv",
+    "precip_seasonality"
+   ]
+  }
+ },
+ "verdict": {
+  "base": 0.4320447184652443,
+  "inc_tex": 0.042131012176940374,
+  "inc_dem": -0.04794630458431559,
+  "inc_clim": -0.05716763139984482,
+  "inc_tex_dem": 0.033860435388978094,
+  "inc_tex_clim": -0.010073385997654727,
+  "total_all": 0.4484138723824962
+ }
+}

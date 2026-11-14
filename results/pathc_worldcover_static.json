@@ -1,0 +1,173 @@
+{
+ "n_rows": 3927,
+ "n_worldcover": 3831,
+ "wc_keys": [
+  "wc_tree",
+  "wc_grass",
+  "wc_crop",
+  "wc_built",
+  "wc_bare",
+  "wc_water_frac",
+  "wc_nclass",
+  "wc_entropy",
+  "wc_dominant"
+ ],
+ "n_feat_base": 12,
+ "mask": "wc",
+ "orthogonality": {
+  "wc_tree": {
+   "r_vs_texture": -0.2634745905592222,
+   "max_abs_r_vs_dem": 0.30711185727961626,
+   "r_vs_dfloor": -0.25699841431195597,
+   "p_vs_dfloor": 7.674476524919171e-59,
+   "n": 3831
+  },
+  "wc_grass": {
+   "r_vs_texture": -0.07679400983954503,
+   "max_abs_r_vs_dem": 0.07690495328344595,
+   "r_vs_dfloor": 0.09452582919214,
+   "p_vs_dfloor": 4.575935233868928e-09,
+   "n": 3831
+  },
+  "wc_crop": {
+   "r_vs_texture": -0.06547941032628013,
+   "max_abs_r_vs_dem": 0.2137134247553907,
+   "r_vs_dfloor": 0.08355143444321465,
+   "p_vs_dfloor": 2.2332822470303887e-07,
+   "n": 3831
+  },
+  "wc_built": {
+   "r_vs_texture": 0.4372999859647554,
+   "max_abs_r_vs_dem": 0.22284261085696402,
+   "r_vs_dfloor": 0.22979575364710672,
+   "p_vs_dfloor": 4.3579950817972805e-47,
+   "n": 3831
+  },
+  "wc_bare": {
+   "r_vs_texture": 0.02142309152215226,
+   "max_abs_r_vs_dem": 0.168864267953523,
+   "r_vs_dfloor": 0.09875957465980555,
+   "p_vs_dfloor": 9.027670703099233e-10,
+   "n": 3831
+  },
+  "wc_water_frac": {
+   "r_vs_texture": -0.058778824444035885,
+   "max_abs_r_vs_dem": 0.12511757395047632,
+   "r_vs_dfloor": 0.009506060196947228,
+   "p_vs_dfloor": 0.556398348826693,
+   "n": 3831
+  },
+  "wc_nclass": {
+   "r_vs_texture": 0.21146283074962124,
+   "max_abs_r_vs_dem": 0.17840291489714663,
+   "r_vs_dfloor": 0.3133203606924811,
+   "p_vs_dfloor": 5.010325560840937e-88,
+   "n": 3831
+  },
+  "wc_entropy": {
+   "r_vs_texture": 0.17143684668978293,
+   "max_abs_r_vs_dem": 0.2038341558155172,
+   "r_vs_dfloor": 0.32927953513606567,
+   "p_vs_dfloor": 1.476152327440928e-97,
+   "n": 3831
+  },
+  "wc_dominant": {
+   "r_vs_texture": -0.13764549999405232,
+   "max_abs_r_vs_dem": 0.20329926482761468,
+   "r_vs_dfloor": -0.288329504664971,
+   "p_vs_dfloor": 3.0472694153668467e-74,
+   "n": 3831
+  }
+ },
+ "featsets": {
+  "+tex+dem+wc": {
+   "p": 27,
+   "n": 3831,
+   "in_r2": 0.798254879567867,
+   "cv_30x60": 0.625611574908249,
+   "cv_leave_campaign": 0.46510340304514286,
+   "per_campaign": {
+    "ASMSpotter": 0.6172005950938618,
+    "Amnesty POI": 0.5993695561308474,
+    "Landcover": 0.3431586476737384,
+    "UNHCR": 0.45760402840723957
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "log_tex",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs",
+    "dem_std",
+    "slope_mean",
+    "tri_mean",
+    "relief",
+    "roughness",
+    "dem_mean",
+    "wc_tree",
+    "wc_grass",
+    "wc_crop",
+    "wc_built",
+    "wc_bare",
+    "wc_water_frac",
+    "wc_nclass",
+    "wc_entropy",
+    "wc_dominant"
+   ]
+  },
+  "+tex+dem+wc+clim": {
+   "p": 32,
+   "n": 3831,
+   "in_r2": 0.8060986835229306,
+   "cv_30x60": 0.609205026594366,
+   "cv_leave_campaign": 0.47361528853194756,
+   "per_campaign": {
+    "ASMSpotter": 0.6836900388201106,
+    "Amnesty POI": 0.6743171031719102,
+    "Landcover": 0.3261760069834658,
+    "UNHCR": 0.4513319007826314
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "log_tex",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs",
+    "dem_std",
+    "slope_mean",
+    "tri_mean",
+    "relief",
+    "roughness",
+    "dem_mean",
+    "wc_tree",
+    "wc_grass",
+    "wc_crop",
+    "wc_built",
+    "wc_bare",
+    "wc_water_frac",
+    "wc_nclass",
+    "wc_entropy",
+    "wc_dominant",
+    "log_precip",
+    "t_mean_ann",
+    "t_seasonality",
+    "precip_cv",
+    "precip_seasonality"
+   ]
+  }
+ }
+}

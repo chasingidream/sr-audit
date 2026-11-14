@@ -1,0 +1,130 @@
+{
+  "task": "P2-1 downstream verification",
+  "protocol": "frozen",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "n_classes": 10,
+  "arms": {
+    "bicubic (baseline)": {
+      "arm": "bicubic (baseline)",
+      "mAcc": 0.2866666666666667,
+      "macroF1": 0.22789697731530287,
+      "mIoU": 0.1469732098054422,
+      "n_samples": 300,
+      "delta_vs_bicubic": {
+        "mAcc": 0.0,
+        "macroF1": 0.0,
+        "mIoU": 0.0
+      }
+    },
+    "audited-pass method": {
+      "arm": "audited-pass method",
+      "mAcc": 0.2866666666666667,
+      "macroF1": 0.23229468645289914,
+      "mIoU": 0.14854869787103966,
+      "n_samples": 300,
+      "delta_vs_bicubic": {
+        "mAcc": 0.0,
+        "macroF1": 0.0044,
+        "mIoU": 0.0016
+      }
+    },
+    "unaudited-fail SOTA": {
+      "arm": "unaudited-fail SOTA",
+      "mAcc": 0.29333333333333333,
+      "macroF1": 0.2358250753694811,
+      "mIoU": 0.15197092959646968,
+      "n_samples": 300,
+      "delta_vs_bicubic": {
+        "mAcc": 0.0067,
+        "macroF1": 0.0079,
+        "mIoU": 0.005
+      }
+    }
+  },
+  "agg": {
+    "bicubic (baseline)": {
+      "mAcc": {
+        "mean": 0.32,
+        "std": 0.0205
+      },
+      "macroF1": {
+        "mean": 0.2468,
+        "std": 0.0221
+      },
+      "mIoU": {
+        "mean": 0.1567,
+        "std": 0.0128
+      },
+      "delta_vs_bicubic_mAcc": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "delta_vs_bicubic_macroF1": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "delta_vs_bicubic_mIoU": {
+        "mean": 0.0,
+        "std": 0.0
+      }
+    },
+    "audited-pass method": {
+      "mAcc": {
+        "mean": 0.322,
+        "std": 0.0195
+      },
+      "macroF1": {
+        "mean": 0.2528,
+        "std": 0.0184
+      },
+      "mIoU": {
+        "mean": 0.16,
+        "std": 0.0106
+      },
+      "delta_vs_bicubic_mAcc": {
+        "mean": 0.002,
+        "std": 0.0072
+      },
+      "delta_vs_bicubic_macroF1": {
+        "mean": 0.006,
+        "std": 0.007
+      },
+      "delta_vs_bicubic_mIoU": {
+        "mean": 0.0033,
+        "std": 0.005
+      }
+    },
+    "unaudited-fail SOTA": {
+      "mAcc": {
+        "mean": 0.3173,
+        "std": 0.0162
+      },
+      "macroF1": {
+        "mean": 0.2453,
+        "std": 0.0212
+      },
+      "mIoU": {
+        "mean": 0.1553,
+        "std": 0.0117
+      },
+      "delta_vs_bicubic_mAcc": {
+        "mean": -0.0027,
+        "std": 0.01
+      },
+      "delta_vs_bicubic_macroF1": {
+        "mean": -0.0014,
+        "std": 0.0074
+      },
+      "delta_vs_bicubic_mIoU": {
+        "mean": -0.0014,
+        "std": 0.0059
+      }
+    }
+  }
+}

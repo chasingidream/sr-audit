@@ -1,0 +1,15 @@
+{
+  "method": "EDiffSR (TGRS 2024)",
+  "orig_gain_db": null,
+  "audit_gain_db": null,
+  "audit_ci": null,
+  "audit_p": null,
+  "audit_d": null,
+  "passes_floor": false,
+  "g1": "FAIL",
+  "g2": "FAIL",
+  "g3": "n/a",
+  "g4": "n/a",
+  "g5": "FAIL",
+  "note": "Task #32 BLOCKED, 数字不可引用。官方权重在原生 x4 合成 regime 下 21.24 dB < 双三次 28.62 dB(-7.38 dB); 真实 x6.63 增益 +0.12 dB 但 G1/G5 均 FAIL(CC=0)。oracle-score 对照证明适配层/SDE 无罪(48.66 dB), 弱的是官方权重本身; '权重早于代码'(enhance 缺 8 key)无法排除。定性引用论文数字 + 标注 not reproducible under audit, 作复现性佐证。"
+}

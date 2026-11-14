@@ -1,0 +1,50 @@
+{
+  "done": [
+    {
+      "station": "NARYN",
+      "seed": 42,
+      "out": "experiments\\paired_s2v_naryn_s42.json"
+    },
+    {
+      "station": "NARYN",
+      "seed": 123,
+      "out": "experiments\\paired_s2v_naryn_s123.json"
+    },
+    {
+      "station": "NARYN",
+      "seed": 7,
+      "out": "experiments\\paired_s2v_naryn_s7.json"
+    },
+    {
+      "station": "ATTO",
+      "seed": 42,
+      "out": "experiments\\paired_s2v_atto_s42.json"
+    },
+    {
+      "station": "ATTO",
+      "seed": 123,
+      "out": "experiments\\paired_s2v_atto_s123.json"
+    },
+    {
+      "station": "ATTO",
+      "seed": 7,
+      "out": "experiments\\paired_s2v_atto_s7.json"
+    },
+    {
+      "station": "SUDOUE-2",
+      "seed": 42,
+      "out": "experiments\\paired_s2v_sudoue_2_s42.json"
+    },
+    {
+      "station": "SUDOUE-2",
+      "seed": 123,
+      "out": "experiments\\paired_s2v_sudoue_2_s123.json"
+    },
+    {
+      "station": "SUDOUE-2",
+      "seed": 7,
+      "out": "experiments\\paired_s2v_sudoue_2_s7.json"
+    }
+  ],
+  "at": "2026-10-06 16:45:19"
+}

@@ -1,0 +1,284 @@
+{
+  "method": "SEN2SR (native dist., SEN2NAIPv2 crosssensor)",
+  "protocol": "SEN2NAIPv2 crosssensor (SEN2SR native distribution): real S2 10m RGBN (B04,B03,B02,B08) LR 130->crop128 -> SR 512 (2.5m); GT = paired NAIP 2.5m RGBN 520->crop512, same geotransform origin; 60 of 8000 samples, evenly spaced; reflectance space",
+  "n_test": 60,
+  "used_idx": [
+    66,
+    200,
+    333,
+    466,
+    600,
+    733,
+    866,
+    1000,
+    1133,
+    1266,
+    1400,
+    1533,
+    1666,
+    1800,
+    1933,
+    2066,
+    2200,
+    2333,
+    2466,
+    2600,
+    2733,
+    2866,
+    3000,
+    3133,
+    3266,
+    3400,
+    3533,
+    3666,
+    3800,
+    3933,
+    4066,
+    4200,
+    4333,
+    4466,
+    4600,
+    4733,
+    4866,
+    5000,
+    5133,
+    5266,
+    5400,
+    5533,
+    5666,
+    5800,
+    5933,
+    6066,
+    6200,
+    6333,
+    6466,
+    6600,
+    6733,
+    6866,
+    7000,
+    7133,
+    7266,
+    7400,
+    7533,
+    7666,
+    7800,
+    7933
+  ],
+  "skipped": [],
+  "spaces": {
+    "refl_rgbn": {
+      "psnr_sen2sr": 35.408,
+      "psnr_bicubic": 35.39,
+      "psnr_floor": 20.672,
+      "delta_model": 0.018,
+      "delta_floor": 14.718,
+      "paired": {
+        "n": 60,
+        "mean": 0.0182,
+        "sd": 0.2168,
+        "t": 0.65,
+        "p": 0.518,
+        "d": 0.084,
+        "ci95": [
+          -0.0378,
+          0.0742
+        ]
+      },
+      "paired_floor": {
+        "n": 60,
+        "mean": 14.7175,
+        "sd": 3.8824,
+        "t": 29.364,
+        "p": 6.6e-37,
+        "d": 3.791,
+        "ci95": [
+          13.7146,
+          15.7205
+        ]
+      }
+    },
+    "refl_rgb": {
+      "psnr_sen2sr": 37.739,
+      "psnr_bicubic": 37.682,
+      "psnr_floor": 28.105,
+      "delta_model": 0.057,
+      "delta_floor": 9.578,
+      "paired": {
+        "n": 60,
+        "mean": 0.0566,
+        "sd": 0.2742,
+        "t": 1.6,
+        "p": 0.115,
+        "d": 0.207,
+        "ci95": [
+          -0.0142,
+          0.1275
+        ]
+      },
+      "paired_floor": {
+        "n": 60,
+        "mean": 9.5776,
+        "sd": 2.8061,
+        "t": 26.438,
+        "p": 2.1e-34,
+        "d": 3.413,
+        "ci95": [
+          8.8527,
+          10.3025
+        ]
+      }
+    },
+    "norm_rgbn": {
+      "psnr_sen2sr": 30.144,
+      "psnr_bicubic": 30.126,
+      "psnr_floor": 15.408,
+      "delta_model": 0.018,
+      "delta_floor": 14.718,
+      "paired": {
+        "n": 60,
+        "mean": 0.0182,
+        "sd": 0.2168,
+        "t": 0.65,
+        "p": 0.518,
+        "d": 0.084,
+        "ci95": [
+          -0.0378,
+          0.0742
+        ]
+      },
+      "paired_floor": {
+        "n": 60,
+        "mean": 14.7175,
+        "sd": 3.8824,
+        "t": 29.364,
+        "p": 6.6e-37,
+        "d": 3.791,
+        "ci95": [
+          13.7146,
+          15.7205
+        ]
+      }
+    }
+  },
+  "primary_space": "refl_rgbn",
+  "delta_model_nohc_db": -0.895,
+  "delta_model_nohc_paired": {
+    "n": 60,
+    "mean": -0.8945,
+    "sd": 0.5185,
+    "t": -13.363,
+    "p": 1.7e-19,
+    "d": -1.725,
+    "ci95": [
+      -1.0285,
+      -0.7606
+    ]
+  },
+  "cc_mean": {
+    "sen2sr": 0.9033,
+    "bicubic": 0.9021
+  },
+  "cc_ratio_model_over_bicubic": 1.0013,
+  "std_ratio_mean": 1.0039,
+  "periodicity_mean": {
+    "sen2sr": 1.387,
+    "bicubic": 1.09,
+    "sen2sr_nohc": 1.387
+  },
+  "dominant_period": {
+    "sen2sr": 4,
+    "bicubic": 6
+  },
+  "corr_lr_box4hr": {
+    "mean": 0.9671,
+    "min": 0.9281,
+    "max": 0.9951
+  },
+  "per_sample_delta_model_refl": [
+    -0.4641,
+    0.0176,
+    0.2265,
+    0.1547,
+    -0.0471,
+    0.1302,
+    -0.1936,
+    0.0665,
+    -0.0083,
+    -0.1419,
+    0.3389,
+    0.1366,
+    0.1223,
+    0.1833,
+    0.2724,
+    -0.1417,
+    0.0071,
+    -0.1877,
+    0.2459,
+    -0.1175,
+    -0.2027,
+    -0.0007,
+    0.0893,
+    -0.0991,
+    -0.1238,
+    0.3912,
+    0.3079,
+    0.1528,
+    0.0457,
+    -0.0732,
+    -0.1335,
+    -0.3629,
+    0.0783,
+    0.1933,
+    0.1272,
+    0.0888,
+    0.0658,
+    0.2332,
+    0.0689,
+    0.3425,
+    0.393,
+    -0.2837,
+    -0.3514,
+    -0.1544,
+    0.034,
+    -0.1016,
+    0.2548,
+    0.0916,
+    -0.3111,
+    -0.6911,
+    -0.0448,
+    0.0532,
+    0.3558,
+    -0.1176,
+    0.0111,
+    0.0676,
+    -0.0615,
+    0.0633,
+    0.2483,
+    -0.1531
+  ],
+  "card": {
+    "method": "SEN2SR (native dist., SEN2NAIPv2 crosssensor)",
+    "n_test": 60,
+    "audit_gain_db": 0.018,
+    "audit_p": 0.518,
+    "passes_floor": true,
+    "g1": "PASS",
+    "g2": "PASS",
+    "g3": 1.004,
+    "g4": 1.387,
+    "g5": "PASS",
+    "delta_floor_db": 14.718
+  },
+  "verdict": {
+    "credibility": "VERIFIED",
+    "regime": "saturated",
+    "gate_verdict": "PASS"
+  },
+  "notes": [
+    "数据入口 = 字节区间直读 .taco（tacoreader 2.4.21 拒收 .taco）；每样本 ~1.23MB。",
+    "GTiff 由 rasterio 解码（自带 zstd 后端）；tifffile 因缺 compression.zstd 不可用。",
+    "SEN2SR 权重/掩码为官方发布物；掩码 (512,512) 硬绑 SR=512 ⇒ LR 裁到 128（不重采样掩码）。",
+    "lr/hr 均为真实采集（S2 ↔ NAIP），非合成下采样：corr(lr, box4x(hr)) 见 corr_lr_box4hr。",
+    "主口径=反射率空间 RGBN data_range=1.0；另报 RGB 与逐场景归一化空间作稳健性。"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "method": "SEN2SR (Aybar et al., RSE 2026, 334:115222; ESA Phi-lab OpenSR; NonReference_RGBN_x4 发布权重, 未训练/未微调)",
+  "task": "WorldStrat 轴原生 x4 真实跨传感器 SISR (S2 frame0 10m RGBN 128x128 -> 2.5m 512x512; GT = SPOT 1.5m 参考同覆盖重采样到 512)",
+  "n_test": 60,
+  "split": "subset=600, val=后10% (60 samples), deterministic crop (_pair_box 同约定)",
+  "orig_gain_db": null,
+  "audit_gain_db": -0.051,
+  "audit_ci": [-0.0702, -0.0318],
+  "audit_p": 1.74e-06,
+  "audit_d": -0.686,
+  "passes_floor": false,
+  "floor_gap_db": -2.575,
+  "g1": "PASS",
+  "g2": "PASS",
+  "g3": "1.49",
+  "g4": "FAIL",
+  "g5": "PASS",
+  "note": "首次把 SEN2SR 从『定性友军』量化为可审计臂(2026-10-05)。在真实跨传感器 x4 配对(n=60)上: model 29.371 / bicubic 29.422 / mean-floor 31.946 dB; Δ_model = -0.051 dB (p=1.74e-06, d=-0.69), 60 景中 97% 为负, 中位 -0.024 / 缩尾 -0.038 ⇒ 未过 bicubic, 更未过技能地板。Δ_floor = -2.525 dB(中位 -1.65/缩尾 -2.05, 三口径全负)⇒ 该站点本身 floor-failure, 与主文 WorldStrat -7.36 (四口径 -7.4~-1.6) 一致。G4 FAIL: 输出周期伪影比 5.50(主导周期=4=PixelShuffle 上采样倍数), 而 bicubic 1.10、ours 1.04、EDSR 1.24、WDSR 1.27 —— 去掉 Fourier 硬约束后伪影仍为 5.51 ⇒ 来源是网络的 PixelShuffle(4) 上采样头, 与硬约束/本文辐射桥接无关。硬约束消融: 裸网络 Δ_model = -0.648 dB (p=1.6e-03), 硬约束把它拉回 -0.051 dB —— 建设性约束修的是辐射保真(G3/G5), 不是技能(Δ_model)。正控: 官方 example_data(n=1) SR mean 0.168 = LR mean 0.168(辐射一致性成立), Δ_model = +0.361 dB ⇒ 方法增益跟着它假设的退化模型走, 不跟着可恢复信息走。稳健性: 归一化空间与反射率空间 Δ_model 完全相同(-0.0456 dB, n=20)⇒ 非桥接产物。边界: 单站点单倍率单方法; GT 由 SPOT 1.5m 重采样到 2.5m 会轻微平滑参考; G4 FAIL 使该臂按本文规则判 VOID, 但正是要展示闸门能抓『已发表建设性方法的质量缺陷』(其原 Wald 协议 + PSNR/SSIM 对亚像素栅格不敏感)。文档 docs/SEN2SR审计_2026-10-05.md, 脚本 code/sen2sr_ws_audit.py, 原始 experiments/sen2sr_audit/ws_arm.json。",
+  "detail": {
+    "psnr_model_mean": 29.371,
+    "psnr_bic_mean": 29.422,
+    "psnr_floor_mean": 31.946,
+    "delta_floor_db": -2.525,
+    "g1_pair_cc": 0.3957,
+    "g2_cc_ratio": 0.9426,
+    "std_ratio_model_over_gt": 1.4884,
+    "grid_ratio_model": 5.498,
+    "grid_ratio_bicubic": 1.097,
+    "dominant_period_model": 4,
+    "delta_model_nohc_db": -0.648,
+    "positive_control_example_data": {"n": 1, "sr_mean": 0.168, "lr_mean": 0.168, "delta_model_db": 0.361},
+    "robustness": {
+      "delta_model": {"mean": -0.051, "median": -0.024, "trim10": -0.038, "frac_positive": 0.03,
+                      "front20": -0.046, "back40": -0.054},
+      "delta_floor": {"mean": -2.525, "median": -1.653, "trim10": -2.049, "frac_positive": 0.40,
+                      "front20": 1.672, "back40": -4.623}
+    },
+    "paired": {
+      "n": 60,
+      "mean": -0.051,
+      "sd": 0.0744,
+      "t": -5.311,
+      "p": 1.74e-06,
+      "d": -0.686,
+      "ci_lo": -0.0702,
+      "ci_hi": -0.0318
+    },
+    "protocol": "native x4: LR 128 (S2 10m RGBN B04/B03/B02/B08, 原始反射率) -> SR 512; 发布掩码 512 未外推; GT = SPOT 同覆盖重采样到 512; 逐场景 (mu,sd) 归一化, 无 GT 知情校正",
+    "device": "cpu"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "site": "NARYN",
+  "archive_n": 3813,
+  "sampled": 300,
+  "ok": 300,
+  "fail": 0,
+  "failed": [],
+  "crs": "EPSG:32643",
+  "out_dir": "data\\external\\sen2venus_hf\\NARYN"
+}

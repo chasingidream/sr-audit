@@ -1,0 +1,25 @@
+[
+  {
+    "dataset": "probav",
+    "scale": 3,
+    "sensor": "同传感器(PROBA-V)",
+    "temporal": "多帧",
+    "n": 594,
+    "n_audited": 60,
+    "lr_hw": "128→384",
+    "cc_raw": 0.8549064679645156,
+    "cc_mean": 0.7630771118025497,
+    "psnr_mean_const": 19.827945874760474,
+    "psnr_bicubic": 21.921209798127187,
+    "psnr_affine": 14.526971276916651,
+    "psnr_affine_insample": 15.076749181320253,
+    "psnr_affine_perscene": 25.600862225731415,
+    "affine_slope": 0.1554461047581996,
+    "affine_intercept": 0.06623491682199514,
+    "affine_R2": 0.15853536061793494,
+    "resid_frac": 0.5879948894746785,
+    "temporal_var": 0.4083988070487976,
+    "bic_gain_over_const": 2.093263923366713,
+    "aff_gain_over_bic": -7.394238521210536
+  }
+]

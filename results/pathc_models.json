@@ -1,0 +1,285 @@
+{
+ "n": 3927,
+ "note": "leak-free = 剔除与 Δ_floor 代数耦合的 var_hr_n 系",
+ "leak_check|leak-free": {
+  "p": 12,
+  "in_r2": 0.8141650556293132,
+  "cv_30x60": 0.6843537623422948,
+  "cv_leave_campaign": 0.47417573064218466,
+  "per_campaign": {
+   "ASMSpotter": 0.6882525798778292,
+   "Amnesty POI": 0.6719513518145622,
+   "Landcover": 0.35268975879054953,
+   "UNHCR": 0.5027287814252221
+  },
+  "keys": [
+   "ndvi_mean",
+   "ndvi_std",
+   "bright_lr",
+   "spec_het",
+   "bright_hr",
+   "log_tex",
+   "abs_lat",
+   "cloud",
+   "abs_dt_log",
+   "lon",
+   "log_area",
+   "log_lccs"
+  ]
+ },
+ "leak_check|+ logVAR(HR)": {
+  "p": 13,
+  "in_r2": 0.8725888198661824,
+  "cv_30x60": 0.7659571140430674,
+  "cv_leave_campaign": 0.5909671074676933,
+  "per_campaign": {
+   "ASMSpotter": 0.8227916490696979,
+   "Amnesty POI": 0.6862805406500244,
+   "Landcover": 0.49048211094567773,
+   "UNHCR": 0.5763199007869444
+  },
+  "keys": [
+   "ndvi_mean",
+   "ndvi_std",
+   "bright_lr",
+   "spec_het",
+   "bright_hr",
+   "log_tex",
+   "abs_lat",
+   "cloud",
+   "abs_dt_log",
+   "lon",
+   "log_area",
+   "log_lccs",
+   "log_var_hr"
+  ]
+ },
+ "delta_floor": {
+  "L1|OLS (lam=0)": {
+   "p": 12,
+   "n": 3927,
+   "in_r2": 0.44508755455902127,
+   "cv": {
+    "5x5": 0.42139950736250165,
+    "10x10": 0.3764053870912266,
+    "20x20": 0.3643284589720329,
+    "30x60": 0.35435793676484795
+   },
+   "cv_leave_campaign": -0.46196078941351915,
+   "per_campaign": {
+    "ASMSpotter": 0.22137715040946593,
+    "Amnesty POI": 0.06627757396107559,
+    "Landcover": -0.88303813428385,
+    "UNHCR": 0.024334563904562345
+   }
+  },
+  "L1|ridge lam=10": {
+   "p": 12,
+   "n": 3927,
+   "in_r2": 0.4450759642095947,
+   "cv": {
+    "5x5": 0.4214357364050949,
+    "10x10": 0.37633438867284186,
+    "20x20": 0.3642609985417731,
+    "30x60": 0.3543165281808037
+   },
+   "cv_leave_campaign": -0.43499979994226656,
+   "per_campaign": {
+    "ASMSpotter": 0.21950168752487909,
+    "Amnesty POI": 0.06552704410634436,
+    "Landcover": -0.8400083780252803,
+    "UNHCR": 0.02891828109396688
+   }
+  },
+  "L1|knn k=15": {
+   "p": 12,
+   "n": 3927,
+   "in_r2": 0.648216816376021,
+   "cv": {
+    "5x5": 0.5295956535788962,
+    "10x10": 0.3982431841196352,
+    "20x20": 0.34325328552130274,
+    "30x60": 0.37362416671328125
+   },
+   "cv_leave_campaign": 0.18617106418944818,
+   "per_campaign": {
+    "ASMSpotter": 0.199744771916194,
+    "Amnesty POI": 0.09925700497532797,
+    "Landcover": 0.1359156978423809,
+    "UNHCR": 0.1595352264805051
+   }
+  },
+  "L1|GBDT n60 lr.15 d4": {
+   "p": 12,
+   "n": 3927,
+   "in_r2": 0.8141650556293132,
+   "cv": {
+    "20x20": 0.6842136071019841,
+    "30x60": 0.6843537623422948
+   },
+   "cv_leave_campaign": 0.47417573064218466,
+   "per_campaign": {
+    "ASMSpotter": 0.6882525798778292,
+    "Amnesty POI": 0.6719513518145622,
+    "Landcover": 0.35268975879054953,
+    "UNHCR": 0.5027287814252221
+   }
+  },
+  "L2|gbdt60": {
+   "p": 22,
+   "n": 3927,
+   "in_r2": 0.8211864358692643,
+   "cv": {
+    "20x20": 0.6889618665035938,
+    "30x60": 0.6760410305718418
+   },
+   "cv_leave_campaign": 0.47693012719190697,
+   "per_campaign": {
+    "ASMSpotter": 0.6855853937120416,
+    "Amnesty POI": 0.688500825444024,
+    "Landcover": 0.3537082034623962,
+    "UNHCR": 0.5184520813427727
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "log_tex",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs",
+    "lat_x_dt",
+    "tex_x_dt",
+    "ndvi_x_tex",
+    "bright_x_tex",
+    "ndvi_sq",
+    "tex_sq",
+    "bright_hr_sq",
+    "cloud_x_ndvi",
+    "spec_x_tex",
+    "ndvistd_x_tex"
+   ]
+  },
+  "L2|ols": {
+   "p": 22,
+   "n": 3927,
+   "in_r2": 0.5510781267400569,
+   "cv": {
+    "5x5": 0.5251720336297732,
+    "10x10": 0.48114711627093976,
+    "20x20": 0.4719099434196181,
+    "30x60": 0.4531832655732516
+   },
+   "cv_leave_campaign": 0.2033930024228432,
+   "per_campaign": {
+    "ASMSpotter": 0.4970211769970523,
+    "Amnesty POI": 0.26457542633318587,
+    "Landcover": 0.06966296041288644,
+    "UNHCR": 0.13366933332253428
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "log_tex",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs",
+    "lat_x_dt",
+    "tex_x_dt",
+    "ndvi_x_tex",
+    "bright_x_tex",
+    "ndvi_sq",
+    "tex_sq",
+    "bright_hr_sq",
+    "cloud_x_ndvi",
+    "spec_x_tex",
+    "ndvistd_x_tex"
+   ]
+  },
+  "L2|knn15": {
+   "p": 22,
+   "n": 3927,
+   "in_r2": 0.6531057293364775,
+   "cv": {
+    "5x5": 0.53453658371845,
+    "10x10": 0.41109391536523654,
+    "20x20": 0.3655137148264741,
+    "30x60": 0.3953126739684155
+   },
+   "cv_leave_campaign": 0.16528129983935935,
+   "per_campaign": {
+    "ASMSpotter": 0.19666043858804672,
+    "Amnesty POI": 0.16295640701592906,
+    "Landcover": 0.09344657481019014,
+    "UNHCR": 0.18086282088665007
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "log_tex",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs",
+    "lat_x_dt",
+    "tex_x_dt",
+    "ndvi_x_tex",
+    "bright_x_tex",
+    "ndvi_sq",
+    "tex_sq",
+    "bright_hr_sq",
+    "cloud_x_ndvi",
+    "spec_x_tex",
+    "ndvistd_x_tex"
+   ]
+  }
+ },
+ "corr_bic_hr": {
+  "L1|gbdt60": {
+   "p": 12,
+   "n": 3927,
+   "in_r2": 0.6220037317319711,
+   "cv": {
+    "20x20": 0.4724795056608081,
+    "30x60": 0.46361179786316176
+   },
+   "cv_leave_campaign": 0.412016965924226,
+   "per_campaign": {
+    "ASMSpotter": 0.2595784473354439,
+    "Amnesty POI": 0.3308461547868884,
+    "Landcover": 0.32827664524557165,
+    "UNHCR": 0.574502399097907
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "log_tex",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs"
+   ]
+  }
+ }
+}

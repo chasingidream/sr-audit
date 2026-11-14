@@ -1,0 +1,11 @@
+{
+ "method": "OUR-OLD: mt档(GT泄漏, 已推翻)",
+ "orig_gain_db": 11.09,
+ "audit_gain_db": null,
+ "audit_ci": [null, null],
+ "audit_p": null,
+ "audit_d": null,
+ "passes_floor": false,
+ "g1": "-", "g2": "-", "g3": "-", "g4": "-", "g5": "FAIL",
+ "note": "HR ref==GT 泄漏, 虚增 +11.09 dB (mt 39.29 vs 干净 28.2); 审计协议 G5 直接作废"
+}

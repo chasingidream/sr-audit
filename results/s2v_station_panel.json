@@ -1,0 +1,173 @@
+{
+  "rows": [
+    {
+      "site": "ATTO",
+      "n_total": 300,
+      "n_val": 30,
+      "dfloor": 4.456047067753829,
+      "n_seeds": 3,
+      "dm": 1.1984891755998675,
+      "dm_sd": 0.059142165385956534,
+      "beta": 0.21195180718994655,
+      "regime": "positive",
+      "seeds": [
+        {
+          "file": "audit_axis_s2v_atto_s123.json",
+          "dm": 1.26413166973488,
+          "p": 1.110790683239548e-09,
+          "passes": true,
+          "overall": "PASS",
+          "n": 30
+        },
+        {
+          "file": "audit_axis_s2v_atto_s42.json",
+          "dm": 1.1819802842586498,
+          "p": 4.286353116591259e-08,
+          "passes": true,
+          "overall": "PASS",
+          "n": 30
+        },
+        {
+          "file": "audit_axis_s2v_atto_s7.json",
+          "dm": 1.1493555728060727,
+          "p": 2.999977353955561e-08,
+          "passes": true,
+          "overall": "PASS",
+          "n": 30
+        }
+      ]
+    },
+    {
+      "site": "FGMANAUS",
+      "n_total": 129,
+      "n_val": 13,
+      "dfloor": 7.988225047658517,
+      "n_seeds": 1,
+      "dm": 0.12881692354946495,
+      "dm_sd": 0.0,
+      "beta": 0.015869934393143756,
+      "regime": "ceiling",
+      "seeds": [
+        {
+          "file": "audit_axis_s2v_sisr.json",
+          "dm": 0.12881692354946495,
+          "p": 0.1685269747823879,
+          "passes": true,
+          "overall": "PASS",
+          "n": 13
+        }
+      ]
+    },
+    {
+      "site": "NARYN",
+      "n_total": 306,
+      "n_val": 31,
+      "dfloor": 13.024572979159625,
+      "n_seeds": 3,
+      "dm": 0.2427897899715319,
+      "dm_sd": 0.0628801319349863,
+      "beta": 0.01829977774757353,
+      "regime": "ceiling",
+      "seeds": [
+        {
+          "file": "audit_axis_s2v_naryn_s123.json",
+          "dm": 0.27662971795639635,
+          "p": 0.057389507875765605,
+          "passes": true,
+          "overall": "PASS",
+          "n": 31
+        },
+        {
+          "file": "audit_axis_s2v_naryn_s42.json",
+          "dm": 0.17023660346192315,
+          "p": 0.20772815720456606,
+          "passes": true,
+          "overall": "PASS",
+          "n": 31
+        },
+        {
+          "file": "audit_axis_s2v_naryn_s7.json",
+          "dm": 0.28150304849627616,
+          "p": 0.14427800349251427,
+          "passes": true,
+          "overall": "PASS",
+          "n": 31
+        }
+      ]
+    },
+    {
+      "site": "SO2",
+      "n_total": 738,
+      "n_val": 74,
+      "dfloor": 6.44261735126591,
+      "n_seeds": 3,
+      "dm": 1.8204864236129197,
+      "dm_sd": 0.05800849829415941,
+      "beta": 0.22031508658374746,
+      "regime": "positive",
+      "seeds": [
+        {
+          "file": "audit_axis_s2v_so2_s123.json",
+          "dm": 1.844408768678477,
+          "p": 1.958763077774886e-22,
+          "passes": true,
+          "overall": "PASS",
+          "n": 74
+        },
+        {
+          "file": "audit_axis_s2v_so2_s42.json",
+          "dm": 1.8627080613548657,
+          "p": 2.3058090496776777e-21,
+          "passes": true,
+          "overall": "PASS",
+          "n": 74
+        },
+        {
+          "file": "audit_axis_s2v_so2_s7.json",
+          "dm": 1.7543424408054165,
+          "p": 8.047090642851286e-19,
+          "passes": true,
+          "overall": "PASS",
+          "n": 74
+        }
+      ]
+    },
+    {
+      "site": "SUDOUE-2",
+      "n_total": 300,
+      "n_val": 30,
+      "dfloor": 10.779430257004588,
+      "n_seeds": 3,
+      "dm": 0.8981028817024873,
+      "dm_sd": 0.08798734108292054,
+      "beta": 0.07690861340616366,
+      "regime": "positive",
+      "seeds": [
+        {
+          "file": "audit_axis_s2v_sudoue_2_s123.json",
+          "dm": 0.8083382543277793,
+          "p": 1.7292468804697573e-05,
+          "passes": true,
+          "overall": "PASS",
+          "n": 30
+        },
+        {
+          "file": "audit_axis_s2v_sudoue_2_s42.json",
+          "dm": 0.9017722611937415,
+          "p": 2.6065247756332183e-05,
+          "passes": true,
+          "overall": "PASS",
+          "n": 30
+        },
+        {
+          "file": "audit_axis_s2v_sudoue_2_s7.json",
+          "dm": 0.9841981295859412,
+          "p": 4.495210095826696e-05,
+          "passes": true,
+          "overall": "PASS",
+          "n": 30
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SR-Audit 协议 · 前端调用示例</title>
+<style>
+  :root { --bg:#0f1420; --panel:#171d2b; --ink:#e8edf6; --mut:#9aa7bd;
+          --line:#28324a; --acc:#4ea1ff; --v:#2ecc71; --q:#f1c40f; --void:#e74c3c; --u:#7f8c9a; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:14px/1.6 -apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif; }
+  .wrap { max-width:1080px; margin:0 auto; padding:28px 20px 60px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .sub { color:var(--mut); margin:0 0 22px; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media (max-width:840px){ .grid{ grid-template-columns:1fr; } }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; }
+  .card h2 { font-size:14px; margin:0 0 10px; color:var(--acc); letter-spacing:.3px; }
+  textarea { width:100%; height:300px; background:#0b0f18; color:#cfe3ff; border:1px solid var(--line);
+             border-radius:8px; padding:10px; font:12.5px/1.5 ui-monospace,Menlo,Consolas,monospace; resize:vertical; }
+  button { margin-top:10px; background:var(--acc); color:#06121f; border:0; border-radius:8px;
+           padding:9px 16px; font-weight:600; cursor:pointer; }
+  button.ghost { background:transparent; color:var(--acc); border:1px solid var(--acc); margin-left:8px; }
+  pre { background:#0b0f18; border:1px solid var(--line); border-radius:8px; padding:10px; max-height:360px;
+        overflow:auto; font:12px/1.45 ui-monospace,Menlo,Consolas,monospace; color:#bfe0c8; }
+  .badge { display:inline-block; padding:6px 14px; border-radius:999px; font-weight:700; font-size:14px; }
+  .b-VERIFIED { background:rgba(46,204,113,.16); color:var(--v); border:1px solid var(--v); }
+  .b-QUALIFIED { background:rgba(241,196,15,.16); color:var(--q); border:1px solid var(--q); }
+  .b-VOID { background:rgba(231,76,60,.16); color:var(--void); border:1px solid var(--void); }
+  .b-UNVERIFIED { background:rgba(127,140,154,.16); color:var(--u); border:1px solid var(--u); }
+  .regime { font-weight:700; }
+  .r-positive { color:var(--v); } .r-saturated { color:var(--q); } .r-floor-failure { color:var(--void); } .r-na { color:var(--u); }
+  table { width:100%; border-collapse:collapse; margin-top:6px; font-size:13px; }
+  th,td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); }
+  th { color:var(--mut); font-weight:600; }
+  .v-PASS { color:var(--v); font-weight:700; } .v-WARN { color:var(--q); font-weight:700; }
+  .v-FAIL { color:var(--void); font-weight:700; } .v-na { color:var(--u); }
+  .kv { color:var(--mut); } .kv b { color:var(--ink); font-weight:600; }
+  .reasons li { margin:2px 0; color:#d7e2f3; }
+  .tip { color:var(--mut); font-size:12.5px; margin-top:8px; }
+  code.inline { background:#0b0f18; padding:1px 6px; border-radius:5px; color:#9fd0ff; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>SR-Audit 评测审计协议 · 前端调用示例</h1>
+  <p class="sub">把某个超分方法的逐场景评测证据发给服务，实时得到门控判定、可信徽章与科学 regime（与论文 <code class="inline">code/sr_audit_report.py</code> 同一口径）。</p>
+
+  <div class="grid">
+    <div class="card">
+      <h2>① 评测证据（POST /audit 的请求体）</h2>
+      <textarea id="req" spellcheck="false"></textarea>
+      <div>
+        <button id="run">▶ 运行审计</button>
+        <button id="reset" class="ghost">恢复示例</button>
+      </div>
+      <p class="tip">字段说明：每景需 <code class="inline">psnr_model / psnr_bicubic / psnr_mean</code>；可选 <code class="inline">cc_bicubic、cc_model、std_model/std_gt、grid_ratio_model、leak_stage</code> 用于 G1–G5 门控。</p>
+    </div>
+
+    <div class="card">
+      <h2>② 审计结果</h2>
+      <div id="result"><span class="kv">点击「运行审计」查看结果…</span></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px;">
+    <h2>③ 前端调用代码（fetch）</h2>
+    <pre id="snippet"></pre>
+  </div>
+</div>
+
+<script>
+const SAMPLE = {
+  "method": "CrossAttnAlign (mtxa_mis_xa)",
+  "task": "WorldStrat 6.63x cross-sensor, misaligned, 5-frame",
+  "scale": 7, "val_dr": 15.06, "split": "val",
+  "scenes": [
+    {"psnr_model":29.38,"psnr_bicubic":30.82,"psnr_mean":33.08,"cc_bicubic":0.303,"cc_model":0.231,"std_model":0.18,"std_gt":0.24,"bias_abs":0.889,"grid_ratio_model":1.05,"grid_period_model":6},
+    {"psnr_model":28.91,"psnr_bicubic":30.41,"psnr_mean":32.77,"cc_bicubic":0.291,"cc_model":0.220,"std_model":0.17,"std_gt":0.23,"bias_abs":0.912,"grid_ratio_model":1.11,"grid_period_model":6},
+    {"psnr_model":30.02,"psnr_bicubic":31.10,"psnr_mean":33.45,"cc_bicubic":0.312,"cc_model":0.244,"std_model":0.19,"std_gt":0.25,"bias_abs":0.851,"grid_ratio_model":0.98,"grid_period_model":6},
+    {"psnr_model":27.55,"psnr_bicubic":29.13,"psnr_mean":31.90,"cc_bicubic":0.277,"cc_model":0.201,"std_model":0.16,"std_gt":0.22,"bias_abs":0.974,"grid_ratio_model":1.20,"grid_period_model":8},
+    {"psnr_model":31.20,"psnr_bicubic":32.05,"psnr_mean":34.11,"cc_bicubic":0.330,"cc_model":0.262,"std_model":0.20,"std_gt":0.26,"bias_abs":0.803,"grid_ratio_model":0.91,"grid_period_model":6}
+  ]
+};
+
+const $ = (id) => document.getElementById(id);
+function reset(){ $("req").value = JSON.stringify(SAMPLE, null, 2); }
+
+function verdictClass(v){ return "v-" + (v||"na"); }
+
+function render(r){
+  const a = r.audit || {};
+  const g = r.gates || {};
+  const s = r.stats || {};
+  const psnr = (s.psnr||{}), paired = (s.paired||{});
+  const gateRows = ["g1","g2","g3","g4","g5"].map(k=>{
+    const o = g[k]||{};
+    return `<tr><td>${(k||'').toUpperCase()}</td><td class="${verdictClass(o.verdict)}">${o.verdict||'n/a'}</td><td class="kv">${o.detail||''}</td></tr>`;
+  }).join("");
+  const reasons = (a.reasons||[]).map(x=>`<li>${x}</li>`).join("");
+  $("result").innerHTML = `
+    <div style="margin-bottom:10px">
+      <span class="badge b-${a.credibility||'UNVERIFIED'}">${(a.credibility||'UNVERIFIED')}</span>
+      &nbsp; regime: <span class="regime r-${(a.regime||'na').replace('-','')}">${a.regime||'n/a'}</span>
+      &nbsp; gate: <b>${a.gate_verdict||'n/a'}</b>
+    </div>
+    <table>
+      <tr><th>指标</th><th>值</th></tr>
+      <tr><td class="kv">PSNR 均值地板</td><td><b>${psnr.mean_floor ?? '-'}</b> dB</td></tr>
+      <tr><td class="kv">PSNR bicubic</td><td><b>${psnr.bicubic ?? '-'}</b> dB</td></tr>
+      <tr><td class="kv">PSNR model</td><td><b>${psnr.model ?? '-'}</b> dB</td></tr>
+      <tr><td class="kv">Δ_floor (bicubic−mean)</td><td><b>${s.delta_floor_db ?? '-'}</b> dB</td></tr>
+      <tr><td class="kv">gain (model−bicubic)</td><td><b>${s.gain_db ?? '-'}</b> dB</td></tr>
+      <tr><td class="kv">配对 t 检验 CI95</td><td><b>${paired.ci ? '['+paired.ci[0]+', '+paired.ci[1]+']' : '-'}</b> dB</td></tr>
+      <tr><td class="kv">p / Cohen's d</td><td><b>${paired.p ?? '-'}</b> / <b>${paired.cohen_d ?? '-'}</b></td></tr>
+    </table>
+    <h2 style="font-size:13px;color:var(--acc);margin:14px 0 4px">门控 G1–G5</h2>
+    <table><tr><th>门</th><th>判定</th><th>依据</th></tr>${gateRows}</table>
+    <h2 style="font-size:13px;color:var(--acc);margin:14px 0 4px">判定理由</h2>
+    <ul class="reasons">${reasons || '<li class="kv">—</li>'}</ul>
+    <p class="tip">headline: ${a.headline||'-'}</p>
+  `;
+}
+
+// 服务基地址：若本页由服务托管则用同源，否则回退到 127.0.0.1:8765（直接双击打开 file:// 时也可用）
+const BASE = (location.origin && location.origin !== "null") ? location.origin : "http://127.0.0.1:8765";
+
+async function run(){
+  const body = $("req").value;
+  let payload;
+  try { payload = JSON.parse(body); }
+  catch(e){ $("result").innerHTML = `<span class="b-VOID">JSON 解析失败: ${e.message}</span>`; return; }
+  try {
+    const resp = await fetch(BASE + "/audit", { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(payload) });
+    const r = await resp.json();
+    render(r);
+  } catch(e){
+    $("result").innerHTML = `<span class="b-VOID">请求失败: ${e.message}</span><br><span class="kv">请确认服务已启动（python code/service/audit_service.py）</span>`;
+  }
+}
+
+function showSnippet(){
+  $("snippet").textContent =
+`const BASE = "http://127.0.0.1:8765";   // 服务地址
+const payload = ${JSON.stringify(SAMPLE, null, 2)};
+
+const resp = await fetch(BASE + "/audit", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(payload)
+});
+const result = await resp.json();
+console.log(result.audit.credibility, result.audit.regime, result.stats.gain_db);
+// => 例如: "QUALIFIED" "floor-failure" -1.56`;
+}
+
+$("run").onclick = run;
+$("reset").onclick = reset;
+reset();
+showSnippet();
+</script>
+</body>
+</html>

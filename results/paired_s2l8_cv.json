@@ -1,0 +1,237 @@
+{
+  "protocol": "4-fold CV (round-robin, 6/6/5/5), global-norm house recipe, 4-band matched (L8 B2/B3/B4/B5 <-> S2 B2/B3/B4/B8), grayscale on valid overlap, n=22 held-out predictions",
+  "n": 22,
+  "delta_model_psnr": {
+    "mean_diff": 0.3273713913949685,
+    "sd": 1.2100586630339227,
+    "ci95": [
+      -0.20913856367834116,
+      0.8638813464682782
+    ],
+    "t": 1.2689532998874438,
+    "p": 0.21834295251740846,
+    "cohen_d": 0.27054175255781876,
+    "n": 22
+  },
+  "delta_floor_psnr": {
+    "mean_diff": 2.1456544699584583,
+    "sd": 3.6427409591608884,
+    "ci95": [
+      0.5305536091100909,
+      3.760755330806826
+    ],
+    "t": 2.7627579489887757,
+    "p": 0.011662097887631727,
+    "cohen_d": 0.589021973841564,
+    "n": 22
+  },
+  "g1_cc_bicubic_gt": {
+    "mean": 0.6815787161595023,
+    "frac_pass": 0.8636363636363636
+  },
+  "group_mean": {
+    "model": 25.961863378976673,
+    "bicubic": 25.63449198758171,
+    "mean": 23.488837517623253
+  },
+  "per_roi": [
+    {
+      "name": "roi_1",
+      "psnr_model": 23.696567486539056,
+      "psnr_bicubic": 21.92161412313114,
+      "psnr_mean": 25.471372558767374,
+      "cc_bicubic": 0.29845344251432115,
+      "psnr_model_rgb_mean": 22.855544261361047,
+      "fold": 0
+    },
+    {
+      "name": "roi_6",
+      "psnr_model": 14.54267283774389,
+      "psnr_bicubic": 14.561306996651805,
+      "psnr_mean": 20.393675540131003,
+      "cc_bicubic": 0.224473202145745,
+      "psnr_model_rgb_mean": 14.48646062838695,
+      "fold": 0
+    },
+    {
+      "name": "roi_15",
+      "psnr_model": 29.851721700546182,
+      "psnr_bicubic": 30.254423348701593,
+      "psnr_mean": 22.657295650432413,
+      "cc_bicubic": 0.9206865069610053,
+      "psnr_model_rgb_mean": 27.85473314152837,
+      "fold": 0
+    },
+    {
+      "name": "roi_21",
+      "psnr_model": 21.605452932829966,
+      "psnr_bicubic": 23.511308534718715,
+      "psnr_mean": 18.173106244165943,
+      "cc_bicubic": 0.8508536444647443,
+      "psnr_model_rgb_mean": 21.250123097474873,
+      "fold": 0
+    },
+    {
+      "name": "roi_25",
+      "psnr_model": 20.493151032043922,
+      "psnr_bicubic": 22.41589674092896,
+      "psnr_mean": 15.470953987128617,
+      "cc_bicubic": 0.9092862653671775,
+      "psnr_model_rgb_mean": 20.085689573423032,
+      "fold": 0
+    },
+    {
+      "name": "roi_29",
+      "psnr_model": 28.585331227707748,
+      "psnr_bicubic": 28.84296377712517,
+      "psnr_mean": 25.667121579517524,
+      "cc_bicubic": 0.722754955897748,
+      "psnr_model_rgb_mean": 27.15568364671471,
+      "fold": 0
+    },
+    {
+      "name": "roi_2",
+      "psnr_model": 24.16293597167927,
+      "psnr_bicubic": 21.26130021884249,
+      "psnr_mean": 23.319278667457482,
+      "cc_bicubic": 0.7080393118654357,
+      "psnr_model_rgb_mean": 22.51981484867695,
+      "fold": 1
+    },
+    {
+      "name": "roi_10",
+      "psnr_model": 31.45205069215021,
+      "psnr_bicubic": 30.27440926030991,
+      "psnr_mean": 27.577852917669503,
+      "cc_bicubic": 0.7543437333900522,
+      "psnr_model_rgb_mean": 29.42983618873556,
+      "fold": 1
+    },
+    {
+      "name": "roi_18",
+      "psnr_model": 22.699558356876484,
+      "psnr_bicubic": 22.639284377175976,
+      "psnr_mean": 18.7884793652615,
+      "cc_bicubic": 0.8821488331601113,
+      "psnr_model_rgb_mean": 22.081092524818082,
+      "fold": 1
+    },
+    {
+      "name": "roi_22",
+      "psnr_model": 24.14968252615649,
+      "psnr_bicubic": 24.089451733806733,
+      "psnr_mean": 21.513986485916583,
+      "cc_bicubic": 0.7457966714247627,
+      "psnr_model_rgb_mean": 22.772312425263955,
+      "fold": 1
+    },
+    {
+      "name": "roi_26",
+      "psnr_model": 27.5836680732387,
+      "psnr_bicubic": 27.732526883119803,
+      "psnr_mean": 23.15195902806046,
+      "cc_bicubic": 0.827898101884321,
+      "psnr_model_rgb_mean": 26.390888507168274,
+      "fold": 1
+    },
+    {
+      "name": "roi_30",
+      "psnr_model": 31.31221901821718,
+      "psnr_bicubic": 30.674199052679903,
+      "psnr_mean": 29.361649799824413,
+      "cc_bicubic": 0.748081432278737,
+      "psnr_model_rgb_mean": 29.519861444083144,
+      "fold": 1
+    },
+    {
+      "name": "roi_3",
+      "psnr_model": 29.335973901159687,
+      "psnr_bicubic": 28.20977244193098,
+      "psnr_mean": 23.98994682021621,
+      "cc_bicubic": 0.8470208231043175,
+      "psnr_model_rgb_mean": 27.721962963101845,
+      "fold": 2
+    },
+    {
+      "name": "roi_13",
+      "psnr_model": 29.409445272837573,
+      "psnr_bicubic": 29.664984278279288,
+      "psnr_mean": 25.527652103813946,
+      "cc_bicubic": 0.7851995478728155,
+      "psnr_model_rgb_mean": 26.34428354597615,
+      "fold": 2
+    },
+    {
+      "name": "roi_19",
+      "psnr_model": 26.22271556756616,
+      "psnr_bicubic": 26.4796042539693,
+      "psnr_mean": 23.483726379798767,
+      "cc_bicubic": 0.7214398428370232,
+      "psnr_model_rgb_mean": 25.57975592478934,
+      "fold": 2
+    },
+    {
+      "name": "roi_23",
+      "psnr_model": 23.84248487674987,
+      "psnr_bicubic": 24.01257653620323,
+      "psnr_mean": 23.634139008221652,
+      "cc_bicubic": 0.4547166995929248,
+      "psnr_model_rgb_mean": 22.74353487737571,
+      "fold": 2
+    },
+    {
+      "name": "roi_27",
+      "psnr_model": 24.7990992979381,
+      "psnr_bicubic": 23.97181990073934,
+      "psnr_mean": 19.986757310165892,
+      "cc_bicubic": 0.8090180399377431,
+      "psnr_model_rgb_mean": 24.192037178188492,
+      "fold": 2
+    },
+    {
+      "name": "roi_5",
+      "psnr_model": 21.67973345347129,
+      "psnr_bicubic": 19.36024830247573,
+      "psnr_mean": 25.319720829060653,
+      "cc_bicubic": 0.0004198266854852026,
+      "psnr_model_rgb_mean": 21.14696795298509,
+      "fold": 3
+    },
+    {
+      "name": "roi_14",
+      "psnr_model": 32.74196249492335,
+      "psnr_bicubic": 33.40564611038968,
+      "psnr_mean": 29.556736819579335,
+      "cc_bicubic": 0.7669951027173462,
+      "psnr_model_rgb_mean": 29.919270994149343,
+      "fold": 3
+    },
+    {
+      "name": "roi_20",
+      "psnr_model": 24.71091723463289,
+      "psnr_bicubic": 25.026948250049333,
+      "psnr_mean": 20.985018777452886,
+      "cc_bicubic": 0.8130891820668953,
+      "psnr_model_rgb_mean": 23.579853583458036,
+      "fold": 3
+    },
+    {
+      "name": "roi_24",
+      "psnr_model": 30.427686896863563,
+      "psnr_bicubic": 28.539935012635883,
+      "psnr_mean": 28.140044276593414,
+      "cc_bicubic": 0.537834098853924,
+      "psnr_model_rgb_mean": 28.623307380803766,
+      "fold": 3
+    },
+    {
+      "name": "roi_28",
+      "psnr_model": 27.855963485615334,
+      "psnr_bicubic": 27.108603592932646,
+      "psnr_mean": 24.58395123847595,
+      "cc_bicubic": 0.6661824904864128,
+      "psnr_model_rgb_mean": 26.603262247179224,
+      "fold": 3
+    }
+  ]
+}

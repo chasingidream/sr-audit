@@ -1,0 +1,24 @@
+[
+  {
+    "dataset": "worldstrat",
+    "scale": 6.63,
+    "sensor": "跨传感器(S2→SPOT)",
+    "temporal": "多帧",
+    "n": 600,
+    "n_audited": 12,
+    "lr_hw": "64→424",
+    "cc_raw": 0.5647150053709646,
+    "cc_mean": 0.5650882080620413,
+    "psnr_mean_const": 23.30594847347129,
+    "psnr_bicubic": 19.712465711561023,
+    "psnr_affine": 26.91742255351746,
+    "psnr_affine_insample": 30.057369308189323,
+    "affine_slope": 1.2603615367040608,
+    "affine_intercept": -0.011013541256050589,
+    "affine_R2": 0.7302968520013176,
+    "resid_frac": 1.0267706866819928,
+    "temporal_var": 0.5885282754898071,
+    "bic_gain_over_const": -3.5934827619102663,
+    "aff_gain_over_bic": 7.204956841956438
+  }
+]

@@ -1,0 +1,185 @@
+{
+ "n_rows": 3927,
+ "n_dem": 3927,
+ "correlations": {
+  "dem_std": {
+   "vs_tex_r": -0.02380334413285335,
+   "vs_tex_p": 0.13585872594213969,
+   "vs_df_r": -0.10593251610156214,
+   "vs_df_p": 2.833727243707524e-11,
+   "n": 3927
+  },
+  "slope_mean": {
+   "vs_tex_r": -0.12607532640755095,
+   "vs_tex_p": 2.195833751005678e-15,
+   "vs_df_r": -0.1339459899651617,
+   "vs_df_p": 3.4813641703979464e-17,
+   "n": 3927
+  },
+  "tri_mean": {
+   "vs_tex_r": -0.1852526127548661,
+   "vs_tex_p": 1.1767779748113934e-31,
+   "vs_df_r": -0.0976937373706813,
+   "vs_df_p": 8.527484828486605e-10,
+   "n": 3927
+  },
+  "relief": {
+   "vs_tex_r": -0.02302565751604996,
+   "vs_tex_p": 0.1491183355908432,
+   "vs_df_r": -0.10831161237541724,
+   "vs_df_p": 1.0083961492941387e-11,
+   "n": 3927
+  },
+  "roughness": {
+   "vs_tex_r": -0.03889912391945469,
+   "vs_tex_p": 0.01477733474509221,
+   "vs_df_r": -0.0949750905836698,
+   "vs_df_p": 2.472290599172314e-09,
+   "n": 3927
+  },
+  "dem_mean": {
+   "vs_tex_r": 0.11165446339109533,
+   "vs_tex_p": 2.2727421256445917e-12,
+   "vs_df_r": -0.07889638584144139,
+   "vs_df_p": 7.411929315227484e-07,
+   "n": 3927
+  }
+ },
+ "tex_vs_df": {
+  "r": 0.3085130455702036,
+  "p": 2.3318096344202733e-87,
+  "n": 3927
+ },
+ "featsets": {
+  "A_leakfree(+tex)": {
+   "p": 12,
+   "n": 3927,
+   "in_r2": 0.8141650556293132,
+   "cv_30x60": 0.6843537623422948,
+   "cv_leave_campaign": 0.47417573064218466,
+   "per_campaign": {
+    "ASMSpotter": 0.6882525798778292,
+    "Amnesty POI": 0.6719513518145622,
+    "Landcover": 0.35268975879054953,
+    "UNHCR": 0.5027287814252221
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "log_tex",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs"
+   ]
+  },
+  "B_dem_only(-tex)": {
+   "p": 17,
+   "n": 3927,
+   "in_r2": 0.7916357919491772,
+   "cv_30x60": 0.6224216599997003,
+   "cv_leave_campaign": 0.3840984138809287,
+   "per_campaign": {
+    "ASMSpotter": 0.5405106921835694,
+    "Amnesty POI": 0.5138371384430911,
+    "Landcover": 0.28351331550720305,
+    "UNHCR": 0.38101570501397286
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs",
+    "dem_std",
+    "slope_mean",
+    "tri_mean",
+    "relief",
+    "roughness",
+    "dem_mean"
+   ]
+  },
+  "C_both": {
+   "p": 18,
+   "n": 3927,
+   "in_r2": 0.8187171942857531,
+   "cv_30x60": 0.6790858568042843,
+   "cv_leave_campaign": 0.5080361660311628,
+   "per_campaign": {
+    "ASMSpotter": 0.7354977196791976,
+    "Amnesty POI": 0.7015639403595006,
+    "Landcover": 0.39015470704959476,
+    "UNHCR": 0.5082210432355734
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "log_tex",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs",
+    "dem_std",
+    "slope_mean",
+    "tri_mean",
+    "relief",
+    "roughness",
+    "dem_mean"
+   ]
+  },
+  "D_base_noderm_notext": {
+   "p": 11,
+   "n": 3927,
+   "in_r2": 0.7810142284222692,
+   "cv_30x60": 0.6151479865061669,
+   "cv_leave_campaign": 0.4320447184652443,
+   "per_campaign": {
+    "ASMSpotter": 0.5510810515671904,
+    "Amnesty POI": 0.546591925083455,
+    "Landcover": 0.3534241647583245,
+    "UNHCR": 0.38448694122944505
+   },
+   "keys": [
+    "ndvi_mean",
+    "ndvi_std",
+    "bright_lr",
+    "spec_het",
+    "bright_hr",
+    "abs_lat",
+    "cloud",
+    "abs_dt_log",
+    "lon",
+    "log_area",
+    "log_lccs"
+   ]
+  }
+ },
+ "verdict": {
+  "subset_n": 3927,
+  "A_leavecamp": 0.47417573064218466,
+  "B_leavecamp": 0.3840984138809287,
+  "C_leavecamp": 0.5080361660311628,
+  "D_leavecamp": 0.4320447184652443,
+  "B_over_A": 0.8100338947350539,
+  "tex_increment_A_minus_D": 0.042131012176940374,
+  "dem_increment_B_minus_D": -0.04794630458431559,
+  "complementary_C_minus_A": 0.033860435388978094,
+  "complementary_C_minus_A_30x60": -0.005267905538010487
+ }
+}

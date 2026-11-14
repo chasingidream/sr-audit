@@ -1,0 +1,48 @@
+{
+  "method": "WDSR-a (Yu et al. 2018, 16 blocks/32 feats/expand4, 单图 SISR)",
+  "task": "WorldStrat 轴单图 SISR (S2 frame0 10m -> SPOT 1.5m, 6.63x 跨传感器)",
+  "n_test": 60,
+  "split": "subset=600, val=后10% (60 samples), deterministic crop",
+  "orig_gain_db": null,
+  "audit_gain_db": -3.021,
+  "audit_ci": [
+    -5.128,
+    -0.915
+  ],
+  "audit_p": 0.006694,
+  "audit_d": -0.363,
+  "passes_floor": false,
+  "floor_gap_db": -5.292,
+  "g1": "FAIL",
+  "g2": "FAIL",
+  "g3": "1.45",
+  "g4": "PASS",
+  "g5": "PASS",
+  "note": "model(frame0) 27.78 / bicubic(frame0) 30.81 / mean-floor 33.08 dB. 审计结论(逐样本配对): WDSR-bicubic -3.02 dB (p=0.0067, d=-0.36). 未过技能地板, 增益被可恢复信息缺口吞没; SR-Audit G1=FAIL(CC(bic,GT)=0.299) G2=FAIL(CC比=0.57) G3=PASS(std_ratio=1.45) G4=PASS(grid=1.27) G5=PASS. WDSR 原协议增益(Set5/Set14 合成 bicubic 2-4x)与本 6.63x 跨传感器真实配对不可直接比; 本条目作为第 3 个独立强 SOTA 复现, 与 EDSR / HighRes-net 共同构成跨架构稳健性证据(深残差 vs 宽激活两条单图主流路线在同一审计协议下对比).",
+  "detail": {
+    "psnr_model_mean": 27.784,
+    "psnr_bic_mean": 30.806,
+    "psnr_floor_mean": 33.077,
+    "g1_pair_cc": 0.2993,
+    "g2_cc_ratio": 0.575,
+    "std_ratio_model_over_gt": 1.4452,
+    "grid_ratio_model": 1.266,
+    "paired": {
+      "n": 60,
+      "mean": -3.0214,
+      "sd": 8.326,
+      "t": -2.811,
+      "p": 0.006694,
+      "d": -0.363,
+      "ci_lo": -5.1282,
+      "ci_hi": -0.9147
+    },
+    "arch": {
+      "n_blocks": 16,
+      "n_feats": 32,
+      "expand": 4,
+      "res_scale": 0.1
+    },
+    "device": "cuda"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "standard": "SR-Audit Report Standard v1 (P2-3 external)",
+  "n_cards": 1,
+  "cards": [
+    {
+      "method": "WDSR (external re-impl)",
+      "task": "WorldStrat cross-sensor 6.63x",
+      "n_test": 60,
+      "split": "val",
+      "g1": "PASS",
+      "g2": "FAIL",
+      "g3": 1.4451723731973742,
+      "g4": 1.266166299687275,
+      "g5": "PASS",
+      "delta_floor_db": -2.255,
+      "passes_floor": false,
+      "floor_gap_db": -5.292,
+      "audit_gain_db": -3.037,
+      "audit_p": 0.006543809015994515,
+      "audit_ci": [
+        -5.193,
+        -0.882
+      ],
+      "audit_d": -0.364,
+      "_derived": {
+        "method": "WDSR (external re-impl)",
+        "task": "WorldStrat cross-sensor 6.63x",
+        "n_test": 60,
+        "split": "val",
+        "gate_verdict": "FAIL",
+        "credibility": "VOID",
+        "regime": "floor-failure",
+        "audit_gain_db": -3.037,
+        "audit_ci": [
+          -5.193,
+          -0.882
+        ],
+        "audit_p": 0.006543809015994515,
+        "audit_d": -0.364,
+        "passes_floor": false,
+        "floor_gap_db": -5.292,
+        "delta_floor_db": -2.255,
+        "gates": {
+          "g1": "PASS",
+          "g2": "FAIL",
+          "g3": "PASS",
+          "g4": "PASS",
+          "g5": "PASS"
+        },
+        "reasons": [
+          "gate FAIL: G2 -> numbers void",
+          "baseline collapsed: Δ_floor=-2.25 dB <= 0, model−bicubic not interpretable as skill",
+          "model does not clear the mean-predictor skill floor",
+          "model worse than bicubic: gain=-3.04 dB < 0 (p=0.00654) -> below the simplest baseline, no genuine skill"
+        ],
+        "headline": "WDSR (external re-impl) | regime=floor-failure | badge=VOID | gain=-3.04 dB | p=0.00654 | Δ_floor=-2.25 dB"
+      },
+      "derived": {
+        "method": "WDSR (external re-impl)",
+        "task": "WorldStrat cross-sensor 6.63x",
+        "n_test": 60,
+        "split": "val",
+        "gate_verdict": "FAIL",
+        "credibility": "VOID",
+        "regime": "floor-failure",
+        "audit_gain_db": -3.037,
+        "audit_ci": [
+          -5.193,
+          -0.882
+        ],
+        "audit_p": 0.006543809015994515,
+        "audit_d": -0.364,
+        "passes_floor": false,
+        "floor_gap_db": -5.292,
+        "delta_floor_db": -2.255,
+        "gates": {
+          "g1": "PASS",
+          "g2": "FAIL",
+          "g3": "PASS",
+          "g4": "PASS",
+          "g5": "PASS"
+        },
+        "reasons": [
+          "gate FAIL: G2 -> numbers void",
+          "baseline collapsed: Δ_floor=-2.25 dB <= 0, model−bicubic not interpretable as skill",
+          "model does not clear the mean-predictor skill floor",
+          "model worse than bicubic: gain=-3.04 dB < 0 (p=0.00654) -> below the simplest baseline, no genuine skill"
+        ],
+        "headline": "WDSR (external re-impl) | regime=floor-failure | badge=VOID | gain=-3.04 dB | p=0.00654 | Δ_floor=-2.25 dB"
+      },
+      "detail": {
+        "psnr_bicubic_mean": 15.509,
+        "psnr_sr_mean": 12.472,
+        "psnr_mean_mean": 17.764,
+        "cc_bicubic": 0.3027,
+        "cc_sr": 0.1721,
+        "g2_ratio": 0.568,
+        "g3_std_ratio": 1.445,
+        "g4_grid_ratio": 1.266,
+        "g4_period": 6
+      }
+    }
+  ]
+}

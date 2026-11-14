@@ -1,0 +1,21 @@
+{
+  "site": "SO2",
+  "source": "hf-mirror tacofoundation/sen2venus TACO v1",
+  "total": 738,
+  "ok": 738,
+  "fail": 0,
+  "failed": [],
+  "bad_lr": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0216,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "out_dir": "data\\external\\sen2venus_hf\\SO2"
+}

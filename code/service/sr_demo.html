@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SR 图像超分推理 · 前端上传示例</title>
+<style>
+  :root { --bg:#0f1420; --panel:#171d2b; --ink:#e8edf6; --mut:#9aa7bd;
+          --line:#28324a; --acc:#4ea1ff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:14px/1.6 -apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif; }
+  .wrap { max-width:1000px; margin:0 auto; padding:28px 20px 60px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .sub { color:var(--mut); margin:0 0 22px; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:840px){ .grid{ grid-template-columns:1fr; } }
+  h2 { font-size:14px; margin:0 0 10px; color:var(--acc); }
+  input[type=file]{ color:var(--mut); }
+  button { margin-top:10px; background:var(--acc); color:#06121f; border:0; border-radius:8px;
+           padding:9px 16px; font-weight:600; cursor:pointer; }
+  .note { color:var(--mut); font-size:12.5px; margin-top:8px; }
+  .imgs { display:flex; gap:12px; flex-wrap:wrap; margin-top:6px; }
+  figure { margin:0; text-align:center; }
+  figure img { max-width:100%; border:1px solid var(--line); border-radius:8px; background:#000; }
+  figcaption { color:var(--mut); font-size:12px; margin-top:4px; }
+  code.inline { background:#0b0f18; padding:1px 6px; border-radius:5px; color:#9fd0ff; }
+  #status { color:var(--acc); margin-top:8px; min-height:1.2em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>SR 图像超分推理 · 前端上传示例</h1>
+  <p class="sub">上传一张低分辨率图片，服务返回超分后的图片（与 bicubic 上采样并排对比）。后端 = 项目训练好的超分模型（<code class="inline">code/service/sr_infer_service.py</code>）。</p>
+
+  <div class="grid">
+    <div class="card">
+      <h2>① 选择图片</h2>
+      <input type="file" id="file" accept="image/*" />
+      <div>
+        <label><input type="checkbox" id="compare" checked /> 返回 [bicubic | 模型SR] 并排对比</label>
+      </div>
+      <button id="run">▶ 超分</button>
+      <div id="status"></div>
+      <p class="note">支持 RGB（自动取亮度用于单通道模型）。返回 PNG 直接渲染。模型默认加载 <code class="inline">ckpt_ep29.pt</code>（WorldStrat RGB / ×4）。</p>
+    </div>
+    <div class="card">
+      <h2>② 原始输入</h2>
+      <div class="imgs"><figure><img id="orig" alt="原图" /><figcaption>你上传的图</figcaption></figure></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <h2>③ 超分结果</h2>
+    <div class="imgs" id="result"><span style="color:var(--mut)">点击「超分」查看结果…</span></div>
+  </div>
+</div>
+
+<script>
+const BASE = (location.origin && location.origin !== "null") ? location.origin : "http://127.0.0.1:8766";
+const $ = (id) => document.getElementById(id);
+
+$("file").onchange = (e) => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = () => { $("orig").src = r.result; };
+  r.readAsDataURL(f);
+};
+
+async function run(){
+  const f = $("file").files[0];
+  if (!f) { $("status").textContent = "请先选择一张图片"; return; }
+  $("status").textContent = "推理中…";
+  const fd = new FormData();
+  fd.append("image", f);
+  const compare = $("compare").checked;
+  try {
+    const resp = await fetch(BASE + "/sr?compare=" + (compare ? "1" : "0"), {
+      method: "POST", body: fd
+    });
+    if (!resp.ok) {
+      const err = await resp.json().catch(()=>({error:resp.statusText}));
+      $("status").textContent = "错误: " + (err.error || resp.statusText);
+      return;
+    }
+    const blob = await resp.blob();
+    const url = URL.createObjectURL(blob);
+    const box = $("result"); box.innerHTML = "";
+    const fig = document.createElement("figure");
+    const im = document.createElement("img"); im.src = url;
+    const cap = document.createElement("figcaption");
+    cap.textContent = compare ? "左：bicubic 上采样　右：模型超分" : "模型超分结果（×scale）";
+    fig.appendChild(im); fig.appendChild(cap); box.appendChild(fig);
+    $("status").textContent = "完成 ✓";
+  } catch(e){
+    $("status").textContent = "请求失败: " + e.message + "（请确认服务已启动）";
+  }
+}
+$("run").onclick = run;
+</script>
+</body>
+</html>

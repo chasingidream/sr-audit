@@ -1,0 +1,59 @@
+{
+ "n_scenes": 3927,
+ "n_feat": 18,
+ "K": 10,
+ "seed": 7,
+ "model": "GBDT60",
+ "keys": [
+  "ndvi_mean",
+  "ndvi_std",
+  "bright_lr",
+  "spec_het",
+  "bright_hr",
+  "log_tex",
+  "abs_lat",
+  "cloud",
+  "abs_dt_log",
+  "lon",
+  "log_area",
+  "log_lccs",
+  "dem_std",
+  "slope_mean",
+  "tri_mean",
+  "relief",
+  "roughness",
+  "dem_mean"
+ ],
+ "grids": {
+  "5.0": {
+   "n_cells": 663,
+   "K": 10,
+   "kfold_by_cell_r2": 0.7253065455223564,
+   "rmse_db": 2.5009224729669106,
+   "n_pred": 3927,
+   "cellmean_r2": 0.8138788137117547,
+   "naive_kfold_r2": 0.7532761870908709,
+   "grouping_cost": -0.027969641568514447
+  },
+  "1.0": {
+   "n_cells": 2273,
+   "K": 10,
+   "kfold_by_cell_r2": 0.7282619659190315,
+   "rmse_db": 2.4874324070714504,
+   "n_pred": 3927,
+   "cellmean_r2": 0.7268119027650259,
+   "naive_kfold_r2": 0.7532761870908709,
+   "grouping_cost": -0.02501422117183938
+  },
+  "0.5": {
+   "n_cells": 2773,
+   "K": 10,
+   "kfold_by_cell_r2": 0.732485239854975,
+   "rmse_db": 2.4680272368974387,
+   "n_pred": 3927,
+   "cellmean_r2": 0.7145535107254835,
+   "naive_kfold_r2": 0.7532761870908709,
+   "grouping_cost": -0.020790947235895807
+  }
+ }
+}

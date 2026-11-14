@@ -1,0 +1,104 @@
+{
+  "standard": "SR-Audit Report Standard v1 (P2-3 external)",
+  "n_cards": 1,
+  "cards": [
+    {
+      "method": "Ours (mtxa_aligned)",
+      "task": "WorldStrat cross-sensor 6.63x",
+      "n_test": 60,
+      "split": "val",
+      "g1": "PASS",
+      "g2": "WARN",
+      "g3": 0.8037823861531525,
+      "g4": 1.0398120253685554,
+      "g5": "PASS",
+      "delta_floor_db": -2.255,
+      "passes_floor": false,
+      "floor_gap_db": -3.134,
+      "audit_gain_db": -0.879,
+      "audit_p": 0.2098976310630628,
+      "audit_ci": [
+        -2.267,
+        0.509
+      ],
+      "audit_d": -0.164,
+      "_derived": {
+        "method": "Ours (mtxa_aligned)",
+        "task": "WorldStrat cross-sensor 6.63x",
+        "n_test": 60,
+        "split": "val",
+        "gate_verdict": "WARN",
+        "credibility": "QUALIFIED",
+        "regime": "floor-failure",
+        "audit_gain_db": -0.879,
+        "audit_ci": [
+          -2.267,
+          0.509
+        ],
+        "audit_p": 0.2098976310630628,
+        "audit_d": -0.164,
+        "passes_floor": false,
+        "floor_gap_db": -3.134,
+        "delta_floor_db": -2.255,
+        "gates": {
+          "g1": "PASS",
+          "g2": "WARN",
+          "g3": "PASS",
+          "g4": "PASS",
+          "g5": "PASS"
+        },
+        "reasons": [
+          "gate WARN: G2",
+          "baseline collapsed: Δ_floor=-2.25 dB <= 0, model−bicubic not interpretable as skill",
+          "model does not clear the mean-predictor skill floor",
+          "model worse than bicubic: gain=-0.88 dB < 0 (p=0.21) -> below the simplest baseline, no genuine skill"
+        ],
+        "headline": "Ours (mtxa_aligned) | regime=floor-failure | badge=QUALIFIED | gain=-0.88 dB | p=0.21 | Δ_floor=-2.25 dB"
+      },
+      "derived": {
+        "method": "Ours (mtxa_aligned)",
+        "task": "WorldStrat cross-sensor 6.63x",
+        "n_test": 60,
+        "split": "val",
+        "gate_verdict": "WARN",
+        "credibility": "QUALIFIED",
+        "regime": "floor-failure",
+        "audit_gain_db": -0.879,
+        "audit_ci": [
+          -2.267,
+          0.509
+        ],
+        "audit_p": 0.2098976310630628,
+        "audit_d": -0.164,
+        "passes_floor": false,
+        "floor_gap_db": -3.134,
+        "delta_floor_db": -2.255,
+        "gates": {
+          "g1": "PASS",
+          "g2": "WARN",
+          "g3": "PASS",
+          "g4": "PASS",
+          "g5": "PASS"
+        },
+        "reasons": [
+          "gate WARN: G2",
+          "baseline collapsed: Δ_floor=-2.25 dB <= 0, model−bicubic not interpretable as skill",
+          "model does not clear the mean-predictor skill floor",
+          "model worse than bicubic: gain=-0.88 dB < 0 (p=0.21) -> below the simplest baseline, no genuine skill"
+        ],
+        "headline": "Ours (mtxa_aligned) | regime=floor-failure | badge=QUALIFIED | gain=-0.88 dB | p=0.21 | Δ_floor=-2.25 dB"
+      },
+      "detail": {
+        "psnr_bicubic_mean": 15.509,
+        "psnr_sr_mean": 14.63,
+        "psnr_mean_mean": 17.764,
+        "cc_bicubic": 0.3027,
+        "cc_sr": 0.2389,
+        "g2_ratio": 0.789,
+        "g3_std_ratio": 0.804,
+        "g4_grid_ratio": 1.04,
+        "g4_period": 6
+      }
+    }
+  ]
+}

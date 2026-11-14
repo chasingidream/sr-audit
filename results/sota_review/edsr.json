@@ -1,0 +1,42 @@
+{
+  "method": "EDSR (Lim et al. 2017, 16 blocks/64 feats, 单图 SISR)",
+  "task": "WorldStrat 轴单图 SISR (S2 frame0 10m -> SPOT 1.5m, 6.63x 跨传感器)",
+  "n_test": 60,
+  "split": "subset=600, val=后10% (60 samples), deterministic crop",
+  "orig_gain_db": null,
+  "audit_gain_db": -2.428,
+  "audit_ci": [
+    -4.565,
+    -0.291
+  ],
+  "audit_p": 0.029804,
+  "audit_d": -0.287,
+  "passes_floor": false,
+  "floor_gap_db": -4.699,
+  "g1": "FAIL",
+  "g2": "WARN",
+  "g3": "1.17",
+  "g4": "PASS",
+  "g5": "PASS",
+  "note": "model(frame0) 28.38 / bicubic(frame0) 30.81 / mean-floor 33.08 dB. 审计结论(逐样本配对): EDSR-bicubic -2.43 dB (p=0.0298, d=-0.29). 未过技能地板, 增益被可恢复信息缺口吞没; SR-Audit G1=FAIL(CC(bic,GT)=0.299) G2=WARN(CC比=0.75) G3=PASS(std_ratio=1.17) G4=PASS(grid=1.24) G5=PASS. EDSR 原协议增益(Set5/Set14 合成 bicubic 2-4x)与本 6.63x 跨传感器真实配对不可直接比; 本条目作为第 2 个独立强 SOTA 复现, 与 HighRes-net 共同构成 WorldStrat 轴双协议复审.",
+  "detail": {
+    "psnr_model_mean": 28.378,
+    "psnr_bic_mean": 30.806,
+    "psnr_floor_mean": 33.077,
+    "g1_pair_cc": 0.2993,
+    "g2_cc_ratio": 0.7538,
+    "std_ratio_model_over_gt": 1.1669,
+    "grid_ratio_model": 1.237,
+    "paired": {
+      "n": 60,
+      "mean": -2.428,
+      "sd": 8.4467,
+      "t": -2.227,
+      "p": 0.029804,
+      "d": -0.287,
+      "ci_lo": -4.5653,
+      "ci_hi": -0.2907
+    },
+    "device": "cuda"
+  }
+}

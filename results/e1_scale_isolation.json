@@ -1,0 +1,56 @@
+{
+  "n_scenes": 60,
+  "crop": 640,
+  "scales": {
+    "2.0": {
+      "psnr_bicubic_mean": 46.629659826113844,
+      "psnr_bicubic_std": 5.720556777123724,
+      "psnr_meanpred_mean": 27.884347684889025,
+      "psnr_meanpred_std": 5.700589779434116,
+      "delta_floor_pure_mean": 18.74531214122481,
+      "delta_floor_pure_std": 2.587286471354254
+    },
+    "3.0": {
+      "psnr_bicubic_mean": 39.105400093905786,
+      "psnr_bicubic_std": 5.870123813080096,
+      "psnr_meanpred_mean": 27.884347684889025,
+      "psnr_meanpred_std": 5.700589779434116,
+      "delta_floor_pure_mean": 11.221052409016773,
+      "delta_floor_pure_std": 2.5733085286549984
+    },
+    "6.63": {
+      "psnr_bicubic_mean": 32.483057892390754,
+      "psnr_bicubic_std": 6.133662197313427,
+      "psnr_meanpred_mean": 27.884347684889025,
+      "psnr_meanpred_std": 5.700589779434116,
+      "delta_floor_pure_mean": 4.598710207501725,
+      "delta_floor_pure_std": 2.4691698714569954
+    }
+  },
+  "decomposition": {
+    "2.0": {
+      "real_label": "SEN2VENµS 2× 跨传感器同日",
+      "delta_floor_real_datalayer": 21.96,
+      "delta_floor_real_methodlayer": 7.988225126931983,
+      "delta_floor_pure": 18.74531214122481,
+      "decorr_datalayer": 3.2146878587751893,
+      "decorr_methodlayer": -10.757087014292829
+    },
+    "3.0": {
+      "real_label": "PROBA-V 3× 同传感器多时相",
+      "delta_floor_real_datalayer": 2.0900000000000034,
+      "delta_floor_real_methodlayer": 1.4220828681085216,
+      "delta_floor_pure": 11.221052409016773,
+      "decorr_datalayer": -9.13105240901677,
+      "decorr_methodlayer": -9.798969540908251
+    },
+    "6.63": {
+      "real_label": "WorldStrat 6.63× 跨传感器多时相",
+      "delta_floor_real_datalayer": -0.09000000000000341,
+      "delta_floor_real_methodlayer": -7.3570030502284105,
+      "delta_floor_pure": 4.598710207501725,
+      "decorr_datalayer": -4.688710207501728,
+      "decorr_methodlayer": -11.955713257730135
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "task": "#22 三数据集同模型训练对照（数据层 -> 方法层）",
+  "protocol": {
+    "arch": "feat=48, n_groups=3, n_blocks=3, rsa_radius=3（三数据集完全一致）",
+    "training": "30 epoch, CosineAnnealing, lr=2e-4, batch=4",
+    "loss": "w_l1=1.0, w_fourier=0.1, w_wavelet=0.1, w_flow=0.0, w_cyclic=0.0",
+    "alignment": "cross_attn + frame0 anchor (use_ref=False, 无 GT 泄漏)",
+    "eval": "code/eval_skill_floor_cfg.py, 验证集=各数据集末10%, deterministic",
+    "ckpt": "ep29 (最终轮)",
+    "commit": "f725eaf"
+  },
+  "results": [
+    {
+      "dataset": "PROBA-V",
+      "scale": 3.0,
+      "sensor": "同传感器",
+      "temporal": "多帧(T=5)",
+      "stage": "mtxa_aligned",
+      "n_val": 60,
+      "val_dr": 2.803528,
+      "psnr": {"mean": 25.6686, "bicubic": 26.7886, "model": 29.3073},
+      "ssim":  {"mean": 0.6090,  "bicubic": 0.7052,  "model": 0.7846},
+      "cc":    {"mean": 0.8966,  "bicubic": 0.9586,  "model": 0.9716},
+      "sam_deg":{"mean": 10.551, "bicubic": 9.057,   "model": 6.104},
+      "bicubic_minus_mean": 1.1200,
+      "model_minus_bicubic": 2.5187,
+      "model_minus_mean": 3.6386
+    },
+    {
+      "dataset": "SEN2VENµS",
+      "scale": 2.0,
+      "sensor": "跨传感器(S2->VENµS)",
+      "temporal": "同日单帧(T=1)",
+      "stage": "sisr",
+      "n_val": 13,
+      "val_dr": 4.273268,
+      "psnr": {"mean": 27.3209, "bicubic": 35.4038, "model": 35.5631},
+      "ssim":  {"mean": 0.7652, "bicubic": 0.9498,  "model": 0.9567},
+      "cc":    {"mean": 0.1437, "bicubic": 0.8470,  "model": 0.7751},
+      "sam_deg":{"mean": 4.756, "bicubic": 2.041,   "model": 1.943},
+      "bicubic_minus_mean": 8.0829,
+      "model_minus_bicubic": 0.1594,
+      "model_minus_mean": 8.2422,
+      "caveat": "n=13 过小，增益估计方差大；CC 反而下降(-0.0719)，需谨慎解读"
+    },
+    {
+      "dataset": "WorldStrat",
+      "scale": 6.63,
+      "sensor": "跨传感器(S2->SPOT)",
+      "temporal": "多帧(T=5)",
+      "stage": "mtxa_aligned",
+      "n_val": 60,
+      "val_dr": 1.000000,
+      "psnr": {"mean": 28.0042, "bicubic": 20.3819, "model": 21.8324},
+      "ssim":  {"mean": 0.8398, "bicubic": 0.7319,  "model": 0.7283},
+      "cc":    {"mean": 0.8665, "bicubic": 0.3237,  "model": 0.5222},
+      "sam_deg":{"mean": 1.433, "bicubic": 5.003,   "model": 7.301},
+      "std_ratio": {"bicubic": 0.323, "model": 0.366, "mean": 0.905},
+      "bicubic_minus_mean": -7.6223,
+      "model_minus_bicubic": 1.4505,
+      "model_minus_mean": -6.1718,
+      "caveat": "⚠ 未通过技能地板铁律：model 与 bicubic 均远低于「预测 GT 均值」；std 比仅 0.32/0.37 说明动态范围被压扁 -> 根因为全局 lr_calib，见 #23（改逐场景标定预期 +4.96 dB 地板）"
+    }
+  ],
+  "key_findings": [
+    "PSNR 不可跨档横比：val_dr 分别为 2.80 / 4.27 / 1.00，且任务难度不同",
+    "SEN2VENµS(2×) 数据层增益已达 +8.08 dB，bicubic 本身 35.40 dB -> 模型只剩 +0.16 dB 空间，这是任务被 bicubic 解决，而非模型弱",
+    "PROBA-V(3× 同传感器多帧) 模型增益 +2.52 dB 且 SAM 9.06->6.10 大幅改善 -> 多时相融合确实有效",
+    "WorldStrat(6.63×) 的 bicubic 甚至不如「预测均值」(-7.62 dB)，反映极端倍率下上采样无法恢复细节、MSE 最优解退化为预测均值（信息论天花板）"
+  ]
+}

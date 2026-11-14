@@ -1,0 +1,16 @@
+# 时空超分 依赖（在托管 Python 运行时安装）
+# 注意：torch/torchvision 不走 PyPI 默认源（默认装 CPU 构建），改用 aliyun cu126 镜像轮子手动安装：
+#   pip install --no-deps torch-2.13.0+cu126-cp313-cp313-win_amd64.whl
+#   pip install --no-deps torchvision-0.28.0+cu126-cp313-cp313-win_amd64.whl
+# 本项目运行时不 import torchvision，torchvision 缺失亦可训练。
+
+numpy
+tifffile
+opencv-python-headless
+scikit-image
+matplotlib
+einops
+lpips
+pandas
+pillow
+tensorboard

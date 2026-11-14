@@ -1,0 +1,22 @@
+[
+  {
+    "dataset": "worldstrat",
+    "n": 60,
+    "psnr_current_global_floor": 16.672480431620837,
+    "psnr_perscene_in": 24.675055929282724,
+    "psnr_perscene_oos": 20.610158365383466,
+    "perscene_oos_minus_current": 4.963542658771414,
+    "perscene_oos_minus_current_p": 1.9984014443252818e-14,
+    "perscene_oos_minus_current_d": 0.9877965810567114
+  },
+  {
+    "dataset": "probav",
+    "n": 60,
+    "psnr_current_global_floor": 22.364026751741985,
+    "psnr_perscene_in": 25.91222137081307,
+    "psnr_perscene_oos": 25.91213728966525,
+    "perscene_oos_minus_current": 4.847200579811603,
+    "perscene_oos_minus_current_p": 4.3365422364161077e-10,
+    "perscene_oos_minus_current_d": 0.8057620866190031
+  }
+]

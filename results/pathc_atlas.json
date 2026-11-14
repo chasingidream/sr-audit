@@ -1,0 +1,83 @@
+{
+ "n_scenes": 3927,
+ "n_feat": 18,
+ "keys": [
+  "ndvi_mean",
+  "ndvi_std",
+  "bright_lr",
+  "spec_het",
+  "bright_hr",
+  "log_tex",
+  "abs_lat",
+  "cloud",
+  "abs_dt_log",
+  "lon",
+  "log_area",
+  "log_lccs",
+  "dem_std",
+  "slope_mean",
+  "tri_mean",
+  "relief",
+  "roughness",
+  "dem_mean"
+ ],
+ "tier_A": {
+  "name": "geographic_interpolation",
+  "r2_buffered30": 0.631,
+  "r2_fine_grid": 0.656,
+  "use": "target cell has observations nearby"
+ },
+ "tier_B": {
+  "name": "regime_extrapolation",
+  "r2_leave_campaign": 0.508,
+  "r2_leave_country": 0.505,
+  "use": "no comparable acquisition regime in the target region"
+ },
+ "grids": {
+  "5.0": {
+   "n_cells": 663,
+   "n_nonempty": 663,
+   "scenes_per_cell_median": 3.0,
+   "scenes_per_cell_max": 200,
+   "dfloor_cellmean_range": [
+    -32.508,
+    0.574
+   ],
+   "dfloor_cellmean_sd": 5.203962887279569,
+   "leave_cell_cv_r2": 0.4270404264352281,
+   "n_pred": 3927,
+   "cv_model": "ridge",
+   "csv": "pathc_atlas_50deg.csv"
+  },
+  "1.0": {
+   "n_cells": 2273,
+   "n_nonempty": 2273,
+   "scenes_per_cell_median": 1.0,
+   "scenes_per_cell_max": 114,
+   "dfloor_cellmean_range": [
+    -35.597,
+    1.064
+   ],
+   "dfloor_cellmean_sd": 4.758784728624116,
+   "leave_cell_cv_r2": 0.42931646801616796,
+   "n_pred": 3927,
+   "cv_model": "ridge",
+   "csv": "pathc_atlas_10deg.csv"
+  },
+  "0.5": {
+   "n_cells": 2773,
+   "n_nonempty": 2773,
+   "scenes_per_cell_median": 1.0,
+   "scenes_per_cell_max": 78,
+   "dfloor_cellmean_range": [
+    -35.597,
+    1.064
+   ],
+   "dfloor_cellmean_sd": 4.551282943322947,
+   "leave_cell_cv_r2": 0.4302039028048751,
+   "n_pred": 3927,
+   "cv_model": "ridge",
+   "csv": "pathc_atlas_05deg.csv"
+  }
+ }
+}

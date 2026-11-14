@@ -1,0 +1,62 @@
+{
+  "method": "SEN2SR (Aybar et al., RSE 2026, 334:115222; ESA Phi-lab OpenSR; NonReference_RGBN_x4 发布权重) —— 同一权重, 但改在 SEN2SR 自己的原生发布分布上评测 (SEN2NAIPv2 crosssensor)",
+  "task": "SEN2NAIPv2 native x4 (SEN2SR 自己的训练/评测分布): 真实 S2 10m RGBN 130->128 -> SR 512 (2.5m); GT = 配对的真实 NAIP 2.5m RGBN 520->512, 同一 geotransform 原点",
+  "n_test": 120,
+  "split": "两个独立互斥子样本 (phase 0.5 与 phase 0.0, 各 60), 在 8000 样本上均匀取样; admin0 = United States (120/120)",
+  "orig_gain_db": null,
+  "audit_gain_db": 0.034,
+  "audit_ci": [-0.0025, 0.0701],
+  "audit_p": 0.068,
+  "audit_d": 0.168,
+  "passes_floor": true,
+  "floor_gap_db": 14.736,
+  "delta_floor_db": 14.64,
+  "g1": "PASS",
+  "g2": "PASS",
+  "g3": 1.004,
+  "g4": 1.387,
+  "g5": "PASS",
+  "note": "2026-10-06 反转记录: 此前(2026-10-05)判定 SEN2NAIPv2 不可达(9.72 GB .taco + tacoreader 2.4.21 拒收 legacy), 现已用字节区间直读打通(见 code/sen2naipv2_probe.py), 每样本仅取 ~1.23 MB。目的=回击『你把 SEN2SR 拿到分布外评测』的质疑。结论: 在它自己家门口, Δ_model 仅 +0.034 dB (p=0.068, 95%CI [-0.003,+0.070] 跨 0, Wilcoxon p=0.049, d=0.168, 59.2% 为正), 而 Δ_floor = +14.64 dB ⇒ 只与 bicubic 打平(saturated), 仅捕获 0.23% 的可恢复余量。两个独立子样本分别 +0.018 (p=0.518, saturated) 与 +0.049 (p=0.042, 边缘 positive) —— 判决恰在 p=0.05 处翻转, 是『饱和』的定义性特征, 故合并 n=120 取为主值。对照分布外(WorldStrat, n=60): Δ_floor=-2.53 塌缩, Δ_model=-0.051 (p=1.7e-6) → floor-failure。⇒ 同一权重从 Δ_floor 轴两端(-2.5 与 +14.6, 相差 17 dB)到达同一终点: 分布外『输』、分布内『平』, 两处都不是真技能。硬约束消融跨域同号: 裸网络 -0.80 dB(分布内) / -0.65 dB(分布外), Fourier 硬约束把两处都从『明显更差』拉回 0 附近 ⇒ 建设性辐射约束修的是保真(G3/G5), 不是技能(Δ_model)。G4 主导周期两处都=4(=PixelShuffle(4) 上采样倍数), 但幅度被域漂移放大 ~4 倍(1.39 -> 5.50) ⇒ 周期闸兼作域漂移探测器。真跨传感器验证: corr(lr, box4x(hr))=0.967(min 0.928/max 0.995), 线性拟合斜率 1.06≠1 ⇒ 非合成下采样; 子样本自带 correlation 列 0.906 vs 全体 0.907 ⇒ 有代表性。零近似: 发布掩码(512,512)硬绑 SR=512 ⇒ LR 裁到 128, 不重采样掩码; GTiff 用 rasterio 解 zstd(缺 compression.zstd 故 tifffile 不可用)。边界: SEN2NAIPv2 为美国境内(NAIP)单国分布, 地理代表性有限, 但这正是该方法自己的域。文档 docs/SEN2NAIPv2原生复核_2026-10-06.md, 脚本 code/sen2naipv2_audit.py, 原始 experiments/sen2sr_audit/sen2naip_arm.json + sen2naip_arm_phase0.json。",
+  "detail": {
+    "psnr_model_mean": 35.408,
+    "psnr_bic_mean": 35.390,
+    "psnr_floor_mean": 20.672,
+    "delta_floor_db": 14.64,
+    "g1_pair_cc": 0.9021,
+    "g2_cc_ratio": 1.0013,
+    "std_ratio_model_over_gt": 1.0039,
+    "grid_ratio_model": 1.387,
+    "grid_ratio_bicubic": 1.090,
+    "dominant_period_model": 4,
+    "delta_model_nohc_db": -0.800,
+    "nohc_p": 1.7e-19,
+    "subsamples": {
+      "phase0.5": {"n": 60, "delta_model": 0.018, "p": 0.518, "delta_floor": 14.718, "verdict": "saturated"},
+      "phase0.0": {"n": 60, "delta_model": 0.049, "p": 0.042, "delta_floor": 14.556, "verdict": "positive (marginal)"}
+    },
+    "spaces": {
+      "refl_rgbn": 0.018,
+      "refl_rgb": 0.057,
+      "norm_rgbn": 0.018
+    },
+    "genuine_cross_sensor_check": {
+      "corr_lr_box4hr_mean": 0.9671,
+      "min": 0.9281,
+      "max": 0.9951,
+      "linfit_slope": 1.06,
+      "dataset_correlation_subsample": 0.906,
+      "dataset_correlation_full": 0.9069
+    },
+    "out_of_distribution_contrast": {
+      "axis": "WorldStrat x4 (n=60)",
+      "delta_floor_db": -2.525,
+      "delta_model_db": -0.051,
+      "p": 1.74e-06,
+      "regime": "floor-failure",
+      "grid_ratio_model": 5.498
+    },
+    "protocol": "SEN2NAIPv2 crosssensor 原生 x4: LR (S2 10m RGBN B04/B03/B02/B08) 130->crop128 -> SR 512; GT = 配对真实 NAIP 2.5m RGBN 520->crop512 同一原点; 发布掩码 512 未外推; 主口径=反射率空间 RGBN data_range=1.0; 真值/输入均 uint16 x10^4 除 10000",
+    "data_entry": "字节区间直读 .taco (tacoreader 2.4.21 拒收 legacy); 每样本 ~1.23 MB; GTiff 由 rasterio 解 zstd",
+    "device": "cpu"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "task": "P2-1 downstream verification",
+  "protocol": "frozen",
+  "seeds": [
+    0
+  ],
+  "n_classes": 4,
+  "arms": {
+    "bicubic (baseline)": {
+      "arm": "bicubic (baseline)",
+      "mAcc": 0.51875,
+      "macroF1": 0.3819018404514554,
+      "mIoU": 0.33958333326336804,
+      "n_samples": 160,
+      "delta_vs_bicubic": {
+        "mAcc": 0.0,
+        "macroF1": 0.0,
+        "mIoU": 0.0
+      }
+    },
+    "unaudited-fail SOTA": {
+      "arm": "unaudited-fail SOTA",
+      "mAcc": 0.4,
+      "macroF1": 0.36598086119893514,
+      "mIoU": 0.23020999464915454,
+      "n_samples": 160,
+      "delta_vs_bicubic": {
+        "mAcc": -0.1188,
+        "macroF1": -0.0159,
+        "mIoU": -0.1094
+      }
+    },
+    "audited-pass method": {
+      "arm": "audited-pass method",
+      "mAcc": 1.0,
+      "macroF1": 0.9999999998747343,
+      "mIoU": 0.9999999997494684,
+      "n_samples": 160,
+      "delta_vs_bicubic": {
+        "mAcc": 0.4812,
+        "macroF1": 0.6181,
+        "mIoU": 0.6604
+      }
+    }
+  }
+}

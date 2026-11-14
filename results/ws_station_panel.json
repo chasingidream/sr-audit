@@ -1,0 +1,298 @@
+{
+  "meta": {
+    "eval": "experiments/ws_eval_holdout.json",
+    "split": "experiments/ws_station_split.json",
+    "stages": [
+      "mtxa_aligned",
+      "mtxa_aligned_s7",
+      "mtxa_aligned_s42",
+      "mtxa_aligned_s123"
+    ],
+    "n": 1000,
+    "beta_ceil": 0.02
+  },
+  "rows": [
+    {
+      "label": "Americas",
+      "n": 200,
+      "dfloor": -4.695217213447516,
+      "dfloor_sd": 7.906969192304748,
+      "dfloor_p": 8.492751181129007e-15,
+      "dmodel": 1.7141868107062148,
+      "dmodel_sd_seeds": 0.043208081674979554,
+      "below_floor": -2.9810304027413013,
+      "clears_floor": false,
+      "beta": null,
+      "regime": "floor-failure",
+      "seeds": [
+        {
+          "stage": "mtxa_aligned",
+          "dm": 1.6786925447845369,
+          "dm_sd": 3.078810798514673,
+          "p": 5.851577123608908e-13,
+          "n": 200,
+          "dm_frac_pos": 0.76
+        },
+        {
+          "stage": "mtxa_aligned_s7",
+          "dm": 1.7495478268372247,
+          "dm_sd": 3.1323889394137376,
+          "p": 1.869281963173445e-13,
+          "n": 200,
+          "dm_frac_pos": 0.785
+        },
+        {
+          "stage": "mtxa_aligned_s42",
+          "dm": 1.7535634961026814,
+          "dm_sd": 3.044964226566771,
+          "p": 4.12972410702279e-14,
+          "n": 200,
+          "dm_frac_pos": 0.77
+        },
+        {
+          "stage": "mtxa_aligned_s123",
+          "dm": 1.674943375100416,
+          "dm_sd": 3.0849676902279075,
+          "p": 7.120843920495808e-13,
+          "n": 200,
+          "dm_frac_pos": 0.76
+        }
+      ]
+    },
+    {
+      "label": "Asia",
+      "n": 200,
+      "dfloor": -4.253644884181377,
+      "dfloor_sd": 5.119831118493735,
+      "dfloor_p": 1.4887948179714735e-24,
+      "dmodel": 2.4662793494497537,
+      "dmodel_sd_seeds": 0.04044184853181781,
+      "below_floor": -1.7873655347316237,
+      "clears_floor": false,
+      "beta": null,
+      "regime": "floor-failure",
+      "seeds": [
+        {
+          "stage": "mtxa_aligned",
+          "dm": 2.4799839324076154,
+          "dm_sd": 3.894100571536757,
+          "p": 1.7437812817449314e-16,
+          "n": 200,
+          "dm_frac_pos": 0.78
+        },
+        {
+          "stage": "mtxa_aligned_s7",
+          "dm": 2.503417834883289,
+          "dm_sd": 3.7887506101132935,
+          "p": 1.9251337210733523e-17,
+          "n": 200,
+          "dm_frac_pos": 0.77
+        },
+        {
+          "stage": "mtxa_aligned_s42",
+          "dm": 2.4728502975111373,
+          "dm_sd": 3.8992702819840845,
+          "p": 2.227061583288079e-16,
+          "n": 200,
+          "dm_frac_pos": 0.78
+        },
+        {
+          "stage": "mtxa_aligned_s123",
+          "dm": 2.4088653329969723,
+          "dm_sd": 4.002311460206658,
+          "p": 4.13929381471731e-15,
+          "n": 200,
+          "dm_frac_pos": 0.795
+        }
+      ]
+    },
+    {
+      "label": "Asia-Pacific",
+      "n": 200,
+      "dfloor": -4.0559047359625735,
+      "dfloor_sd": 4.924596258140284,
+      "dfloor_p": 3.0354823983491867e-24,
+      "dmodel": 1.4632333405426905,
+      "dmodel_sd_seeds": 0.19509928806811141,
+      "below_floor": -2.592671395419883,
+      "clears_floor": false,
+      "beta": null,
+      "regime": "floor-failure",
+      "seeds": [
+        {
+          "stage": "mtxa_aligned",
+          "dm": 1.280874676861294,
+          "dm_sd": 3.9934251330307116,
+          "p": 9.896904860271961e-06,
+          "n": 200,
+          "dm_frac_pos": 0.68
+        },
+        {
+          "stage": "mtxa_aligned_s7",
+          "dm": 1.3809709955727305,
+          "dm_sd": 4.012028468422054,
+          "p": 2.293276675956031e-06,
+          "n": 200,
+          "dm_frac_pos": 0.69
+        },
+        {
+          "stage": "mtxa_aligned_s42",
+          "dm": 1.4556201480107602,
+          "dm_sd": 3.905527282576956,
+          "p": 3.518623077327506e-07,
+          "n": 200,
+          "dm_frac_pos": 0.695
+        },
+        {
+          "stage": "mtxa_aligned_s123",
+          "dm": 1.735467541725977,
+          "dm_sd": 3.7912435476996005,
+          "p": 7.305702182065389e-10,
+          "n": 200,
+          "dm_frac_pos": 0.76
+        }
+      ]
+    },
+    {
+      "label": "Africa",
+      "n": 200,
+      "dfloor": -4.587437385563569,
+      "dfloor_sd": 4.733235674283273,
+      "dfloor_p": 1.5131622364969324e-30,
+      "dmodel": 1.748444016603272,
+      "dmodel_sd_seeds": 0.16262710978815528,
+      "below_floor": -2.8389933689602973,
+      "clears_floor": false,
+      "beta": null,
+      "regime": "floor-failure",
+      "seeds": [
+        {
+          "stage": "mtxa_aligned",
+          "dm": 1.6273048523278275,
+          "dm_sd": 3.743010841481869,
+          "p": 4.207707293220918e-09,
+          "n": 200,
+          "dm_frac_pos": 0.73
+        },
+        {
+          "stage": "mtxa_aligned_s7",
+          "dm": 1.9513881777466415,
+          "dm_sd": 3.6117550473498143,
+          "p": 8.919707146849585e-13,
+          "n": 200,
+          "dm_frac_pos": 0.76
+        },
+        {
+          "stage": "mtxa_aligned_s42",
+          "dm": 1.6072029112068684,
+          "dm_sd": 3.835560472126298,
+          "p": 1.3483273047468858e-08,
+          "n": 200,
+          "dm_frac_pos": 0.725
+        },
+        {
+          "stage": "mtxa_aligned_s123",
+          "dm": 1.8078801251317507,
+          "dm_sd": 3.782053489027138,
+          "p": 1.4935512095574585e-10,
+          "n": 200,
+          "dm_frac_pos": 0.76
+        }
+      ]
+    },
+    {
+      "label": "Europe",
+      "n": 200,
+      "dfloor": -3.0858741196461943,
+      "dfloor_sd": 3.9482991147612396,
+      "dfloor_p": 1.8796911717599693e-22,
+      "dmodel": 1.737101752669927,
+      "dmodel_sd_seeds": 0.044243352708576836,
+      "below_floor": -1.3487723669762672,
+      "clears_floor": false,
+      "beta": null,
+      "regime": "floor-failure",
+      "seeds": [
+        {
+          "stage": "mtxa_aligned",
+          "dm": 1.684218658113249,
+          "dm_sd": 3.703046576377514,
+          "p": 9.16465015450851e-10,
+          "n": 200,
+          "dm_frac_pos": 0.79
+        },
+        {
+          "stage": "mtxa_aligned_s7",
+          "dm": 1.74412150354305,
+          "dm_sd": 3.8355748940981282,
+          "p": 9.233678688057639e-10,
+          "n": 200,
+          "dm_frac_pos": 0.77
+        },
+        {
+          "stage": "mtxa_aligned_s42",
+          "dm": 1.7286104946868348,
+          "dm_sd": 3.6951786241753073,
+          "p": 3.3423456409009586e-10,
+          "n": 200,
+          "dm_frac_pos": 0.79
+        },
+        {
+          "stage": "mtxa_aligned_s123",
+          "dm": 1.7914563543365745,
+          "dm_sd": 3.550438238539813,
+          "p": 1.7548342661909515e-11,
+          "n": 200,
+          "dm_frac_pos": 0.795
+        }
+      ]
+    },
+    {
+      "label": "ALL(pooled)",
+      "n": 1000,
+      "dfloor": -4.135615667760246,
+      "dfloor_sd": 5.513868584673203,
+      "dfloor_p": 5.2919840551053015e-99,
+      "dmodel": 1.8258490539943715,
+      "dmodel_sd_seeds": 0.06101764754127,
+      "below_floor": -2.3097666137658743,
+      "clears_floor": false,
+      "beta": null,
+      "regime": "floor-failure",
+      "seeds": [
+        {
+          "stage": "mtxa_aligned",
+          "dm": 1.7502149328989045,
+          "dm_sd": 3.709929818440822,
+          "p": 1.375571633309764e-45,
+          "n": 1000,
+          "dm_frac_pos": 0.748
+        },
+        {
+          "stage": "mtxa_aligned_s7",
+          "dm": 1.865889267716587,
+          "dm_sd": 3.6993205608270006,
+          "p": 3.409731570462687e-51,
+          "n": 1000,
+          "dm_frac_pos": 0.755
+        },
+        {
+          "stage": "mtxa_aligned_s42",
+          "dm": 1.8035694695036566,
+          "dm_sd": 3.6996966467455974,
+          "p": 2.914046081985753e-48,
+          "n": 1000,
+          "dm_frac_pos": 0.752
+        },
+        {
+          "stage": "mtxa_aligned_s123",
+          "dm": 1.883722545858338,
+          "dm_sd": 3.6580599505743656,
+          "p": 4.675938626840483e-53,
+          "n": 1000,
+          "dm_frac_pos": 0.774
+        }
+      ]
+    }
+  ]
+}

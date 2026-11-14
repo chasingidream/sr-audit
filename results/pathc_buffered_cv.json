@@ -1,0 +1,38 @@
+{
+ "n": 3927,
+ "n_feat": 12,
+ "buffers_deg": [
+  0.0,
+  10.0,
+  30.0
+ ],
+ "model": "gbdt",
+ "blocks": {
+  "30x60": {
+   "0.0": {
+    "buffer_deg": 0.0,
+    "cv_r2": 0.6843537623422948,
+    "n_pred": 3927,
+    "n_tr_mean": 3800,
+    "n_tr_min": 3179,
+    "train_removed_frac": 0.0323
+   },
+   "10.0": {
+    "buffer_deg": 10.0,
+    "cv_r2": 0.6685346512943826,
+    "n_pred": 3927,
+    "n_tr_mean": 3690,
+    "n_tr_min": 2809,
+    "train_removed_frac": 0.0604
+   },
+   "30.0": {
+    "buffer_deg": 30.0,
+    "cv_r2": 0.6309682208178771,
+    "n_pred": 3927,
+    "n_tr_mean": 3346,
+    "n_tr_min": 1938,
+    "train_removed_frac": 0.148
+   }
+  }
+ }
+}

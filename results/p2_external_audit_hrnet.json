@@ -1,0 +1,100 @@
+{
+  "standard": "SR-Audit Report Standard v1 (P2-3 external)",
+  "n_cards": 1,
+  "cards": [
+    {
+      "method": "HighRes-net (official)",
+      "task": "WorldStrat cross-sensor 6.63x",
+      "n_test": 60,
+      "split": "val",
+      "g1": "PASS",
+      "g2": "WARN",
+      "g3": 0.9013164394112606,
+      "g4": 1.1546509789475006,
+      "g5": "PASS",
+      "delta_floor_db": -2.255,
+      "passes_floor": true,
+      "floor_gap_db": 4.461,
+      "audit_gain_db": 6.716,
+      "audit_p": 4.57952200406637e-13,
+      "audit_ci": [
+        5.261,
+        8.171
+      ],
+      "audit_d": 1.193,
+      "_derived": {
+        "method": "HighRes-net (official)",
+        "task": "WorldStrat cross-sensor 6.63x",
+        "n_test": 60,
+        "split": "val",
+        "gate_verdict": "WARN",
+        "credibility": "QUALIFIED",
+        "regime": "floor-failure",
+        "audit_gain_db": 6.716,
+        "audit_ci": [
+          5.261,
+          8.171
+        ],
+        "audit_p": 4.57952200406637e-13,
+        "audit_d": 1.193,
+        "passes_floor": true,
+        "floor_gap_db": 4.461,
+        "delta_floor_db": -2.255,
+        "gates": {
+          "g1": "PASS",
+          "g2": "WARN",
+          "g3": "PASS",
+          "g4": "PASS",
+          "g5": "PASS"
+        },
+        "reasons": [
+          "gate WARN: G2",
+          "baseline collapsed: Δ_floor=-2.25 dB <= 0, model−bicubic not interpretable as skill"
+        ],
+        "headline": "HighRes-net (official) | regime=floor-failure | badge=QUALIFIED | gain=+6.72 dB | p=4.58e-13 | Δ_floor=-2.25 dB"
+      },
+      "derived": {
+        "method": "HighRes-net (official)",
+        "task": "WorldStrat cross-sensor 6.63x",
+        "n_test": 60,
+        "split": "val",
+        "gate_verdict": "WARN",
+        "credibility": "QUALIFIED",
+        "regime": "floor-failure",
+        "audit_gain_db": 6.716,
+        "audit_ci": [
+          5.261,
+          8.171
+        ],
+        "audit_p": 4.57952200406637e-13,
+        "audit_d": 1.193,
+        "passes_floor": true,
+        "floor_gap_db": 4.461,
+        "delta_floor_db": -2.255,
+        "gates": {
+          "g1": "PASS",
+          "g2": "WARN",
+          "g3": "PASS",
+          "g4": "PASS",
+          "g5": "PASS"
+        },
+        "reasons": [
+          "gate WARN: G2",
+          "baseline collapsed: Δ_floor=-2.25 dB <= 0, model−bicubic not interpretable as skill"
+        ],
+        "headline": "HighRes-net (official) | regime=floor-failure | badge=QUALIFIED | gain=+6.72 dB | p=4.58e-13 | Δ_floor=-2.25 dB"
+      },
+      "detail": {
+        "psnr_bicubic_mean": 15.509,
+        "psnr_sr_mean": 22.225,
+        "psnr_mean_mean": 17.764,
+        "cc_bicubic": 0.3027,
+        "cc_sr": 0.2584,
+        "g2_ratio": 0.854,
+        "g3_std_ratio": 0.901,
+        "g4_grid_ratio": 1.155,
+        "g4_period": 10
+      }
+    }
+  ]
+}

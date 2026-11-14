@@ -1,0 +1,24 @@
+[
+  {
+    "dataset": "sen2venus",
+    "scale": 2,
+    "sensor": "跨传感器(S2→VENµS)",
+    "temporal": "同日单帧",
+    "n": 129,
+    "n_audited": 60,
+    "lr_hw": "128→256",
+    "cc_raw": 0.9970953550840602,
+    "cc_mean": 0.9966553648848077,
+    "psnr_mean_const": 11.899567824576518,
+    "psnr_bicubic": 33.86158931956091,
+    "psnr_affine": 34.92763288529537,
+    "psnr_affine_insample": 35.504297875764614,
+    "affine_slope": 0.997697848291686,
+    "affine_intercept": 0.0003388759278782721,
+    "affine_R2": 0.9931632375159871,
+    "resid_frac": 0.005869676886840081,
+    "temporal_var": NaN,
+    "bic_gain_over_const": 21.962021494984395,
+    "aff_gain_over_bic": 1.0660435657344536
+  }
+]

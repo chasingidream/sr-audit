@@ -1,0 +1,81 @@
+{
+  "stage": "mtxa_aligned",
+  "axis_cfg": "external_probav_n300_nir_s123.py",
+  "ckpt_path": "experiments\\ckpts_probav_nir_s123\\mtxa_aligned\\ckpt_ep29.pt",
+  "n_samples": 283,
+  "val_dr": 3.552688241004944,
+  "predictors": {
+    "mean": {
+      "psnr": 26.528834786901303,
+      "ssim": 0.52434457262759,
+      "cc": 0.0,
+      "sam_deg": 20.03844136484099
+    },
+    "bicubic": {
+      "psnr": 28.173506289880585,
+      "ssim": 0.6142050906276678,
+      "cc": 0.8314576347856085,
+      "sam_deg": 19.06408734540636
+    },
+    "model": {
+      "psnr": 30.705693222025577,
+      "ssim": 0.7161529799145777,
+      "cc": 0.8701117479041849,
+      "sam_deg": 14.413273215503585
+    }
+  },
+  "pair_cc": 0.8314576347856085,
+  "bias": 0.06785836499250188,
+  "std_ratio": 0.9314250859691903,
+  "grid_ratio_model": 1.258146213137219,
+  "grid_ratio_bicubic": 0.9210250807313953,
+  "grid_period_model": 3,
+  "grid_period_bicubic": 10,
+  "gain_db": 2.5321869321449917,
+  "delta_floor_db": 1.644671502979282,
+  "paired_psnr": {
+    "mean_diff": 2.5321869321449917,
+    "sd": 2.6823308198680778,
+    "ci95": [
+      2.218327558368452,
+      2.8460463059215315
+    ],
+    "t": 15.880955956651013,
+    "p": 5.200499268751058e-41,
+    "cohen_d": 0.9440248433895747,
+    "n": 283
+  },
+  "gates": {
+    "G1_配对完整性": {
+      "verdict": "PASS",
+      "detail": "CC(bic,GT)=0.831 (阈值≥0.30)"
+    },
+    "G2_结构保真": {
+      "verdict": "PASS",
+      "detail": "model CC / bicubic CC = 1.05"
+    },
+    "G3_输出统计": {
+      "verdict": "PASS",
+      "detail": "std_ratio=0.93, |bias|=0.0679"
+    },
+    "G4_周期伪影": {
+      "verdict": "PASS",
+      "detail": "ratio=1.26 @ period=3px (bicubic 0.92 @ 10px)"
+    },
+    "G5_泄漏风险": {
+      "verdict": "PASS",
+      "detail": "未见泄漏"
+    }
+  },
+  "overall": "PASS",
+  "method": "mtxa_aligned",
+  "n_test": 283,
+  "audit_gain_db": 2.5321869321449917,
+  "audit_p": 5.200499268751058e-41,
+  "passes_floor": true,
+  "g1": "PASS",
+  "g2": "PASS",
+  "g3": 0.9314250859691903,
+  "g4": 1.258146213137219,
+  "g5": "PASS"
+}

@@ -1,0 +1,13 @@
+# 发布仓库：只放 Tier A（结果记录 + 图件）与代码。
+# 权重走 Zenodo；原始影像（CC BY-NC）一律不入库。
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+/data/raw/
+/data/external/
+*.tif
+*.tiff
+*.npy
+*.pt
+*.pth

@@ -1,0 +1,55 @@
+{
+  "stage": "mtxa_aligned",
+  "n_samples": 60,
+  "val_dr": 1.0,
+  "predictors": {
+    "mean": {
+      "psnr": 30.454855747771077,
+      "ssim": 0.8177474095029266,
+      "cc": 0.0,
+      "sam": 11.260174106131263
+    },
+    "bicubic": {
+      "psnr": 28.81433637451335,
+      "ssim": 0.7318047054538551,
+      "cc": 0.29931559813531877,
+      "sam": 5.001726466036973
+    },
+    "model": {
+      "psnr": 28.709556574781267,
+      "ssim": 0.7301534466289958,
+      "cc": 0.2632959920730205,
+      "sam": 6.210809610753939
+    }
+  },
+  "pair_cc": 0.29931559813531877,
+  "bias": 0.08110607685521246,
+  "std_ratio": 0.7777067835753163,
+  "grid_ratio_model": 1.1384694695472717,
+  "grid_ratio_bicubic": 1.1288137932618458,
+  "grid_period_model": 7,
+  "grid_period_bicubic": 6,
+  "gates": {
+    "G1_配对完整性": {
+      "verdict": "FAIL",
+      "detail": "CC(bic,GT)=0.299 (阈值≥0.30)"
+    },
+    "G2_结构保真": {
+      "verdict": "WARN",
+      "detail": "model CC / bicubic CC = 0.88"
+    },
+    "G3_输出统计": {
+      "verdict": "PASS",
+      "detail": "std_ratio=0.78, |bias|=0.0811"
+    },
+    "G4_周期伪影": {
+      "verdict": "PASS",
+      "detail": "ratio=1.14 @ period=7px (bicubic 1.13 @ 6px)"
+    },
+    "G5_泄漏风险": {
+      "verdict": "PASS",
+      "detail": "未见泄漏"
+    }
+  },
+  "overall": "FAIL"
+}

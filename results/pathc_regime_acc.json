@@ -1,0 +1,43 @@
+{
+ "n": 3927,
+ "p": 12,
+ "tiers": {
+  "leave_campaign": {
+   "tier": "leave_one_campaign_out",
+   "n": 3927,
+   "pos_frac_true": 0.0735930735930736,
+   "baseline_always_negative_acc": 0.9264069264069265,
+   "sign_accuracy": 0.922332569391393,
+   "balanced_accuracy": 0.5360249652362319,
+   "sensitivity_tpr": 0.08304498269896193,
+   "specificity_tnr": 0.9890049477735019,
+   "auc": 0.7473877239671214,
+   "acc_gain_over_baseline": -0.004074357015533492,
+   "r2": 0.47417573064218466,
+   "per_campaign_r2": {
+    "ASMSpotter": 0.6882525798778292,
+    "Amnesty POI": 0.6719513518145622,
+    "Landcover": 0.35268975879054953,
+    "UNHCR": 0.5027287814252221
+   }
+  },
+  "spatial_30x60": {
+   "r2": 0.6843537623422948,
+   "n": 3927,
+   "note": "cv_spatial 不回传 OOF，仅报 R²"
+  },
+  "cell_1deg": {
+   "tier": "kfold_by_cell_1deg",
+   "n": 3927,
+   "pos_frac_true": 0.0735930735930736,
+   "baseline_always_negative_acc": 0.9264069264069265,
+   "sign_accuracy": 0.9264069264069265,
+   "balanced_accuracy": 0.5302606474145458,
+   "sensitivity_tpr": 0.0657439446366782,
+   "specificity_tnr": 0.9947773501924134,
+   "auc": 0.7735561384920039,
+   "acc_gain_over_baseline": 0.0,
+   "r2": 0.7225370238180788
+  }
+ }
+}

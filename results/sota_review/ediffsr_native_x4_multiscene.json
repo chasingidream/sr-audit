@@ -1,0 +1,106 @@
+{
+  "purpose": "回应二轮攻击点4：EDiffSR 原生 x4 regime 健康探针扩到 n=12（原 n=2）",
+  "role": "diagnostic health probe（排除 adapter 完全坏掉），非 quantitative claim",
+  "weights": "third_party\\ediffsr\\180000_G.pth",
+  "seed": 0,
+  "n": 12,
+  "indices": [
+    0,
+    356,
+    713,
+    1070,
+    1427,
+    1784,
+    2141,
+    2498,
+    2855,
+    3212,
+    3569,
+    3926
+  ],
+  "per_scene": [
+    {
+      "idx": 0,
+      "psnr_bicubic_x4": 35.3865,
+      "psnr_ediffsr_x4": 26.2444,
+      "diff_sr_minus_bic": -9.1422
+    },
+    {
+      "idx": 356,
+      "psnr_bicubic_x4": 24.3797,
+      "psnr_ediffsr_x4": 17.3845,
+      "diff_sr_minus_bic": -6.9952
+    },
+    {
+      "idx": 713,
+      "psnr_bicubic_x4": 32.5708,
+      "psnr_ediffsr_x4": 22.9798,
+      "diff_sr_minus_bic": -9.591
+    },
+    {
+      "idx": 1070,
+      "psnr_bicubic_x4": 32.5741,
+      "psnr_ediffsr_x4": 24.3506,
+      "diff_sr_minus_bic": -8.2236
+    },
+    {
+      "idx": 1427,
+      "psnr_bicubic_x4": 27.2945,
+      "psnr_ediffsr_x4": 19.5177,
+      "diff_sr_minus_bic": -7.7768
+    },
+    {
+      "idx": 1784,
+      "psnr_bicubic_x4": 28.7049,
+      "psnr_ediffsr_x4": 20.6434,
+      "diff_sr_minus_bic": -8.0616
+    },
+    {
+      "idx": 2141,
+      "psnr_bicubic_x4": 25.949,
+      "psnr_ediffsr_x4": 18.3746,
+      "diff_sr_minus_bic": -7.5744
+    },
+    {
+      "idx": 2498,
+      "psnr_bicubic_x4": 35.1291,
+      "psnr_ediffsr_x4": 27.0121,
+      "diff_sr_minus_bic": -8.117
+    },
+    {
+      "idx": 2855,
+      "psnr_bicubic_x4": 24.9125,
+      "psnr_ediffsr_x4": 17.731,
+      "diff_sr_minus_bic": -7.1814
+    },
+    {
+      "idx": 3212,
+      "psnr_bicubic_x4": 25.5481,
+      "psnr_ediffsr_x4": 20.0703,
+      "diff_sr_minus_bic": -5.4779
+    },
+    {
+      "idx": 3569,
+      "psnr_bicubic_x4": 25.2713,
+      "psnr_ediffsr_x4": 17.9435,
+      "diff_sr_minus_bic": -7.3278
+    },
+    {
+      "idx": 3926,
+      "psnr_bicubic_x4": 37.8447,
+      "psnr_ediffsr_x4": 31.3869,
+      "diff_sr_minus_bic": -6.4579
+    }
+  ],
+  "paired": {
+    "mean_diff": -7.6606,
+    "sd": 1.1128,
+    "ci95": [
+      -8.2902,
+      -7.0309
+    ],
+    "t": -23.85,
+    "p": 8.038340389110145e-11
+  },
+  "conclusion": "同一权重在其原生合成 x4 regime 中 仍落后于 双三次（均值 -7.66 dB）"
+}

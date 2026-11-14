@@ -1,0 +1,53 @@
+{
+  "method": "HighRes-net",
+  "task": "WorldStrat JIF MFSR (S2 8 revisits -> SPOT, 160->156 近匹配融合/锐化)",
+  "n_test": 394,
+  "split": "official stratified test (held-out)",
+  "orig_gain_db": 7.912,
+  "audit_gain_db": 7.912,
+  "audit_ci": [
+    7.182,
+    8.641
+  ],
+  "audit_p": 0.0,
+  "audit_d": 1.074,
+  "passes_floor": true,
+  "g1": "PASS",
+  "g2": "PASS",
+  "g3": "0.83",
+  "g4": "n/a",
+  "g5": "PASS",
+  "note": "model 32.59 / bicubic 24.68 / mean-floor 31.59 dB; G2(model/bic CC ratio)=1.122; unregistered gain=+8.924 dB (p=0.0000); orig_gain_db=本工作对其协议的忠实复现(非论文原报数字).",
+  "detail": {
+    "psnr_model_mean": 32.588,
+    "psnr_model_std": 7.856,
+    "psnr_bic_mean": 24.677,
+    "psnr_floor_mean": 31.593,
+    "cc_model_mean": 0.7125,
+    "cc_bic_mean": 0.6353,
+    "cc_floor_mean": 0.387,
+    "g2_ratio": 1.1215,
+    "std_ratio_model_over_gt": 0.8254,
+    "paired_reg": {
+      "n": 394,
+      "mean": 7.91177,
+      "sd": 7.36554,
+      "t": 21.32145,
+      "p": 0.0,
+      "d": 1.07416,
+      "ci_lo": 7.18223,
+      "ci_hi": 8.6413
+    },
+    "paired_raw": {
+      "n": 394,
+      "mean": 8.92362,
+      "sd": 7.22685,
+      "t": 24.50982,
+      "p": 0.0,
+      "d": 1.23479,
+      "ci_lo": 8.20783,
+      "ci_hi": 9.63942
+    },
+    "device": "cuda"
+  }
+}
