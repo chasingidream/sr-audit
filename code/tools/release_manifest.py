@@ -122,7 +122,10 @@ def main():
         for p in sorted(glob.glob(os.path.join(EXP, pat))):
             tier_a.append((_rel(p), os.path.getsize(p)))
     # 排除明显属于中间态的 raw 产物
-    tier_a = [x for x in tier_a if not x[0].endswith(("_raw.json", "release_manifest.json"))]
+    # 只排除真正的中间态：release_manifest.json 是生成器自身产物。
+    # 注意 `sota_review/ediffsr_raw.json` 虽以 _raw 结尾，但它是主文 T2-EDNAT2 的
+    # 结果记录（1.2 KB），必须发布，故不再按后缀一刀切。
+    tier_a = [x for x in tier_a if not x[0].endswith("release_manifest.json")]
 
     # ---- Tier B: 发布权重（每 stage 只取末轮）----
     tier_b, total_b = [], 0

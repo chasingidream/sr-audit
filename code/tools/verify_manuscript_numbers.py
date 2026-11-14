@@ -10,15 +10,19 @@
 import json
 import os
 
-EXP = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "experiments"))
+_BASE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# 开发仓用 experiments/，发布仓用 results/；两处都找，先命中先用
+_DIRS = [os.path.join(_BASE, "experiments"), os.path.join(_BASE, "results")]
+EXP = _DIRS[0]
 _cache = {}
 
 
 def load(fn):
     if fn in _cache:
         return _cache[fn]
-    p = os.path.join(EXP, fn)
-    if not os.path.exists(p):
+    p = next((os.path.join(d, fn) for d in _DIRS
+              if os.path.exists(os.path.join(d, fn))), None)
+    if p is None:
         _cache[fn] = None
         return None
     try:
@@ -78,8 +82,9 @@ def note(cid, text, actual):
 
 
 def raw(fn):
-    p = os.path.join(EXP, fn)
-    return open(p, encoding="utf-8").read() if os.path.exists(p) else ""
+    p = next((os.path.join(d, fn) for d in _DIRS
+              if os.path.exists(os.path.join(d, fn))), None)
+    return open(p, encoding="utf-8").read() if p else ""
 
 
 # ================= 数据层 Δ_floor（金标准口径） =================
@@ -461,7 +466,7 @@ print(f"PASS={npass}  MISMATCH={nmis}  NO-SOURCE={nno}  合计={len(RESULTS)}")
 # 畸形 JSON 扫描
 import glob
 bad = []
-for f in sorted(glob.glob(os.path.join(EXP, "**", "*.json"), recursive=True)):
+for f in sorted(f2 for d in _DIRS for f2 in glob.glob(os.path.join(d, "**", "*.json"), recursive=True)):
     try:
         json.load(open(f, encoding="utf-8"))
     except Exception as e:

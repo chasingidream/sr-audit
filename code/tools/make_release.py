@@ -54,6 +54,9 @@ PROJ_TOKENS = [
 TEXT_EXT = {".json", ".jsonl", ".md", ".txt", ".py", ".yaml", ".yml", ".cfg", ".cff"}
 SKIP_DIRS = {"__pycache__", ".git", ".ipynb_checkpoints"}
 
+RELEASE_SRC = os.path.join(BASE, "release")   # 仓库根级文件的源（README/LICENSE/…）
+ROOT_FILES = ["README.md", "README_audit.md", "ENVIRONMENT.md", "LICENSE", "CITATION.cff"]
+
 ABS_PATH_RE = re.compile(
     r"(?<![A-Za-z])[A-Za-z]:[\\/](?:[A-Za-z0-9_.\- ]+[\\/])+[A-Za-z0-9_.\-]*")
 # 系统路径不算泄漏：vcomp140.dll 的陷阱与中文字体都是要写进 ENVIRONMENT.md 的正当内容。
@@ -211,6 +214,70 @@ def clean(dest: str) -> None:
             print(f"[clean] 删除 {p}")
 
 
+def sha256(path: str, chunk: int = 1 << 20) -> str:
+    import hashlib
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        while True:
+            b = f.read(chunk)
+            if not b:
+                break
+            h.update(b)
+    return h.hexdigest()
+
+
+def copy_root_files(dest: str) -> list[str]:
+    """把 release/ 下的仓库根级文件（README/LICENSE/CITATION/…）拷到发布树根。"""
+    if not os.path.isdir(RELEASE_SRC):
+        print(f"[warn] 缺少 {RELEASE_SRC}，跳过根级文件")
+        return []
+    got = []
+    for fn in sorted(os.listdir(RELEASE_SRC)):
+        src = os.path.join(RELEASE_SRC, fn)
+        if os.path.isfile(src):
+            shutil.copy2(src, os.path.join(dest, fn))
+            got.append(fn)
+    missing = [f for f in ROOT_FILES if f not in got]
+    if missing:
+        print(f"[warn] release/ 中缺：{missing}")
+    return got
+
+
+def rewrite_manifest(dest: str, files: list[str]) -> None:
+    """在发布树内重算 RELEASE_MANIFEST.md 的 Tier A 表。
+
+    开发清单里的路径是 `experiments/…`、SHA 是**脱敏前**的，直接拷过去会全表对不上。
+    这里按发布后的实际文件重写：路径改成 `results/…`，体积与 SHA256 取脱敏后的值。
+    """
+    txt = open(MANIFEST_MD, encoding="utf-8").read()
+    head, rest = txt.split("## Tier A", 1)
+    tail = "## Tier B" + rest.split("## Tier B", 1)[1]
+
+    rows, total = [], 0
+    for rel in files:
+        sub = rel.split("experiments/", 1)[1] if rel.startswith("experiments/") else rel
+        dp = os.path.join(dest, "results", sub)
+        sz = os.path.getsize(dp)
+        total += sz
+        rows.append(f"| `results/{sub}` | {human(sz)} | `{sha256(dp)[:16]}…` |")
+
+    block = [
+        "## Tier A — 结果记录与图件（入库 GitHub，可 diff）",
+        "",
+        "> 本表在**发布树内**重算：路径相对仓库根（`results/`），体积与 SHA256 均为脱敏后的实际值。",
+        "> 开发树里的清单 SHA 对应脱敏前的文件，两者不通用。校验方式见 `README_audit.md` §1。",
+        "",
+        "| 文件 | 体积 | SHA256 |",
+        "|---|---|---|",
+        *rows,
+        "",
+        f"**Tier A 合计：{human(total)}（{len(files)} 个文件）**",
+        "",
+    ]
+    open(os.path.join(dest, "RELEASE_MANIFEST.md"), "w", encoding="utf-8", newline="").write(
+        head + "\n".join(block) + "\n\n" + tail)
+
+
 def write_gitignore(dest: str) -> None:
     p = os.path.join(dest, ".gitignore")
     body = """# 发布仓库：只放 Tier A（结果记录 + 图件）与代码。
@@ -284,12 +351,15 @@ def main() -> None:
     proc = copy_processed(dest)
     proc_n = sum(n for _, n in proc)
 
-    shutil.copy2(MANIFEST_MD, os.path.join(dest, "RELEASE_MANIFEST.md"))
+    root = copy_root_files(dest)
+    rewrite_manifest(dest, files)
     write_gitignore(dest)
 
     print(f"[ok] Tier A  {len(files)} 文件  {human(total)}")
     print(f"[ok] code/    {human(sum(os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(os.path.join(dest, 'code')) for f in fs))}")
     print(f"[ok] data/processed  {len(proc)} 文件（其中清单脱敏 {proc_n} 处路径）")
+    print(f"[ok] 根级文件  {len(root)} 个：{', '.join(root)}")
+    print(f"[ok] RELEASE_MANIFEST.md 已在发布树内重算（results/ 路径 + 脱敏后 SHA）")
     print(f"[ok] 文本脱敏  工程路径 {replaced + code_n} 处")
     print(f"[ok] -> {dest}")
 

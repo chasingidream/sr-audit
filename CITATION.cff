@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this code or these result records, please cite the article below."
+title: "SR-Audit: skill-floor audit code and result records for satellite super-resolution"
+abstract: >-
+  Reference implementation and released result records for a skill-floor audit of
+  satellite super-resolution evaluation. Every reported gain is paired with the
+  zero-information baseline floor (what a constant spatial-mean predictor already
+  achieves) and with the captured share beta, so that gains produced by a collapsed
+  bicubic baseline can be separated from recovered information. Includes the five
+  SR-Audit gates (G1-G5), the scale-isolation experiment, and independent
+  re-implementations of four published methods.
+type: software
+version: "1.0.0"
+date-released: "2026-10-07"
+license: BSD-3-Clause
+repository-code: "https://github.com/[organisation]/sr-audit"
+url: "https://github.com/[organisation]/sr-audit"
+authors:
+  - family-names: "[Surname]"
+    given-names: "[Given name]"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+    affiliation: "[Affiliation]"
+  - family-names: "[Surname]"
+    given-names: "[Given name]"
+    affiliation: "[Affiliation]"
+keywords:
+  - super-resolution
+  - satellite imagery
+  - evaluation protocol
+  - reproducibility
+  - benchmark audit
+  - Sentinel-2
+  - SPOT
+  - PROBA-V
+references:
+  - type: generic
+    title: "Illusory satellite super-resolution gains trace to a collapsed baseline and a mappable land-surface information budget"
+    notes: "Manuscript under review. Replace with the journal article once published, and add its DOI."
