@@ -31,6 +31,8 @@ SEN2VENµS HR (VENµS) are CC BY-NC, so we release per-sample numeric records, n
 ## Quickstart — no GPU, no imagery, no training
 
 ```bash
+git clone https://github.com/chasingidream/sr-audit.git
+cd sr-audit
 pip install numpy          # the CPU check needs nothing else
 python code/tools/quickstart_cpu.py
 ```

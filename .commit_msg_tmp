@@ -1,0 +1,7 @@
+回填 GitHub 仓库地址
+
+- CITATION.cff: repository-code / url 由 [organisation] 占位改为 chasingidream
+- README.md: Quickstart 增加 git clone 两行，读者可直接从零复现
+
+（LICENSE 版权人、CITATION.cff 作者姓名/单位/ORCID 仍为占位，
+ 待作者确认后再改一次；这也是 GitHub 目前显示 License: Other 的原因。）

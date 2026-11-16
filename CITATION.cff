@@ -13,8 +13,8 @@ type: software
 version: "1.0.0"
 date-released: "2026-10-07"
 license: BSD-3-Clause
-repository-code: "https://github.com/[organisation]/sr-audit"
-url: "https://github.com/[organisation]/sr-audit"
+repository-code: "https://github.com/chasingidream/sr-audit"
+url: "https://github.com/chasingidream/sr-audit"
 authors:
   - family-names: "[Surname]"
     given-names: "[Given name]"
