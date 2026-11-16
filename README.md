@@ -103,6 +103,11 @@ Until then the exact checkpoint inventory is listed in `RELEASE_MANIFEST.md` §T
 Code and result records: **BSD-3-Clause** (see [`LICENSE`](LICENSE)).
 Figures may be reused under the same licence with attribution.
 
+> **Scope of the licence.** It covers the source code and the numeric result
+> records in this repository. It grants **no** right to the imagery used in the
+> study: WorldStrat HR (SPOT 6/7) and SEN2VENµS HR (VENµS) are licensed CC BY-NC
+> by their providers and are not redistributed here.
+
 Citation metadata is in [`CITATION.cff`](CITATION.cff). While the paper is under review,
 please cite the preprint once it is posted; the archived release is `v1.0.0` of this
 repository and matches the numbers in the submitted manuscript.
