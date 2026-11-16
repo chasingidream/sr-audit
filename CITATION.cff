@@ -17,13 +17,19 @@ doi: "10.5281/zenodo.24280503"
 repository-code: "https://github.com/chasingidream/sr-audit"
 url: "https://github.com/chasingidream/sr-audit"
 authors:
-  - family-names: "[Surname]"
-    given-names: "[Given name]"
+  # 三条占位对应正文 §Author contributions 的 [A.B.] / [C.D.] / [E.F.]。
+  # 顺序即作者顺序；通讯作者在正文 End Notes 单独标 e-mail，CFF 无对应字段。
+  - family-names: "[Surname 1]"
+    given-names: "[Given name 1]"
     orcid: "https://orcid.org/0000-0000-0000-0000"
-    affiliation: "[Affiliation]"
-  - family-names: "[Surname]"
-    given-names: "[Given name]"
-    affiliation: "[Affiliation]"
+    affiliation: "[Affiliation 1]"
+  - family-names: "[Surname 2]"
+    given-names: "[Given name 2]"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+    affiliation: "[Affiliation 2]"
+  - family-names: "[Surname 3]"
+    given-names: "[Given name 3]"
+    affiliation: "[Affiliation 3]"
 keywords:
   - super-resolution
   - satellite imagery
