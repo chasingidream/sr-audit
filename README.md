@@ -22,8 +22,9 @@ recovered information. Every axis in the paper is reported as a pair
 | `data/processed/` | WorldStrat manifests (train / held-out split) and per-scene normalisation and calibration parameters |
 | `RELEASE_MANIFEST.md` | Full inventory with size and SHA-256 (first 16 hex digits) for every released file |
 
-**Weights** (19 per-axis checkpoints, ~229 MiB) are archived on Zenodo — see
-*Data and checkpoints* below. **Imagery is not redistributed**: WorldStrat HR (SPOT 6/7) and
+**Weights** (19 per-axis checkpoints, 220.5 MB) are archived on Zenodo at
+<https://doi.org/10.5281/zenodo.24280503> — see *Data and checkpoints* below.
+**Imagery is not redistributed**: WorldStrat HR (SPOT 6/7) and
 SEN2VENµS HR (VENµS) are CC BY-NC, so we release per-sample numeric records, never pixels.
 
 ---
@@ -93,8 +94,11 @@ Training one axis is ~30 min on an 8 GB consumer GPU; the gate pass is a few min
 | SEN2VENµS (VENµS + Sentinel-2) | Zenodo record 6514159 | HR **CC BY-NC** — not redistributed |
 | L8-S2-NAIP (Sentinel-2 ↔ Landsat-8) | Hugging Face `namelesscoder/L8-S2-NAIP`; we use only its S2/L8 pairs | see source |
 
-Trained per-axis checkpoints (~229 MiB): **Zenodo DOI to be inserted at submission.**
-Until then the exact checkpoint inventory is listed in `RELEASE_MANIFEST.md` §Tier B.
+Trained per-axis checkpoints (19 files, 220.5 MB / 210 MiB):
+**<https://doi.org/10.5281/zenodo.24280503>** (CC BY-NC 4.0 — trained on CC BY-NC
+imagery, see the licence note above). A single archive, `sr-audit-weights-v1.0.0.zip`;
+its `weights/` tree mirrors `experiments/`, so it can be unpacked straight into a
+checkout. The exact checkpoint inventory is also listed in `RELEASE_MANIFEST.md` §Tier B.
 
 ---
 

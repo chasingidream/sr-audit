@@ -11,8 +11,9 @@ abstract: >-
   re-implementations of four published methods.
 type: software
 version: "1.0.0"
-date-released: "2026-10-07"
+date-released: "2026-11-16"
 license: BSD-3-Clause
+doi: "10.5281/zenodo.24280503"
 repository-code: "https://github.com/chasingidream/sr-audit"
 url: "https://github.com/chasingidream/sr-audit"
 authors:
