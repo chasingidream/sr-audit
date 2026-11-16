@@ -293,6 +293,7 @@ venv/
 *.npy
 *.pt
 *.pth
+.commit_msg_tmp
 """
     open(p, "w", encoding="utf-8", newline="").write(body)
 

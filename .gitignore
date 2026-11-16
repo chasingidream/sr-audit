@@ -11,3 +11,4 @@ venv/
 *.npy
 *.pt
 *.pth
+.commit_msg_tmp
